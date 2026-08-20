@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="datos.Costo" table="costo">
+    	<!-- ID -->
+        <id name="costo" column="idCosto">
+            <generator class="identity"/>
+        </id>
+		<!-- Atributos - Columnas -->
+		<property name="porSupeficie" column="porSuperficie" type="float" not-null="true"/>
+		<property name="porMontaje" column="porMontaje" type="float" not-null="true"/>
+		<property name="usoElectricidad" column="usoElectrcidad" type="float" not-null="true"/>
+		<property name="sueldoBase" column="sueldoBase" type="float" not-null="true"/>
+		
+		<many-to-one name="cliente" class="datos.Cliente" column="idCliente" not-null="true"/>
+	</class>
+</hibernate-mapping>
