@@ -2,6 +2,7 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"><hibernate-configuration>
 	<session-factory>
+	
 		<!-- conexion con la BD-->
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://localhost:3306/festival_gourmet?serverTimezone=America/Argentina/Buenos_Aires</property>
@@ -16,13 +17,12 @@
 
     <!--Mapeo Entidades   -->
     <mapping resource="mapeos/UnidadDeVenta.hbm.xml"/>
-    <mapping resource="mapeos/Costo.hbm.xml"/>
-    <mapping resource="mapeos/DetalleDePedido.hbm.xml"/>
+    <mapping resource="mapeos/Cajero.hbm.xml"/>
     <mapping resource="mapeos/Festival.hbm.xml"/>
     <mapping resource="mapeos/FoodTruck.hbm.xml"/>
     <mapping resource="mapeos/Pedido.hbm.xml"/>
     <mapping resource="mapeos/Personal.hbm.xml"/>
-    <mapping resource="mapeos/Puesto.hbm.xml"/>
+    <mapping resource="mapeos/Cocinero.hbm.xml"/>
     <mapping resource="mapeos/PuestoDesarmable.hbm.xml"/>
     <mapping resource="mapeos/Plato.hbm.xml"/>
 
