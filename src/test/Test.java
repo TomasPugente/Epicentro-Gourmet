@@ -8,6 +8,7 @@ public class Test {
 		session.beginTransaction();
 		session.close();
 		System.out.println("OK");
+		int prueba=0;
 	}
 
 }
