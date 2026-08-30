@@ -16,15 +16,8 @@
 		<property name="format_sql">true</property><!-- en true se ve mas legible el hql en consola-->
 
     <!--Mapeo Entidades   -->
-    <mapping resource="mapeos/UnidadDeVenta.hbm.xml"/>
-    <mapping resource="mapeos/Cajero.hbm.xml"/>
     <mapping resource="mapeos/Festival.hbm.xml"/>
-    <mapping resource="mapeos/FoodTruck.hbm.xml"/>
-    <mapping resource="mapeos/Pedido.hbm.xml"/>
     <mapping resource="mapeos/Personal.hbm.xml"/>
-    <mapping resource="mapeos/Cocinero.hbm.xml"/>
-    <mapping resource="mapeos/PuestoDesarmable.hbm.xml"/>
-    <mapping resource="mapeos/Plato.hbm.xml"/>
 
   </session-factory>
 </hibernate-configuration>
