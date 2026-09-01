@@ -1,4 +1,6 @@
 package dao;
+import java.util.List;
+
 import datos.Personal;
 
 public class PersonalDao extends Dao<Personal> {
@@ -16,4 +18,6 @@ public class PersonalDao extends Dao<Personal> {
 		return instancia;
 	
 	}
+	
+
 }
