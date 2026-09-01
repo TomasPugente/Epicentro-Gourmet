@@ -1,16 +1,8 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-/dao/
-/test/
-/datos/
-/negocio/
-/mapeos/
-=======
+
 # Eclipse
 .classpath
 .project
 .settings/
-
 # Compilados
 bin/
 target/
@@ -21,9 +13,4 @@ target/
 
 # Configuración sensible
 .env
->>>>>>> Stashed changes
-=======
-/dao/
-/negocio/
-/datos/
->>>>>>> Stashed changes
+

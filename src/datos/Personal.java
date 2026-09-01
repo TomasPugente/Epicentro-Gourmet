@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public abstract class Personal {
-	protected int idPersonal;
+	protected long idPersonal;
 	protected String nombre;
 	protected String apellido;
 	protected int dni;
@@ -26,11 +26,11 @@ public abstract class Personal {
 		this.sueldoBase = sueldoBase;
 	}
 
-	public int getIdPersonal() {
+	public long getIdPersonal() {
 		return idPersonal;
 	}
 
-	public void setIdPersonal(int idpersonal) {
+	public void setIdPersonal(long idpersonal) {
 		this.idPersonal = idpersonal;
 	}
 
