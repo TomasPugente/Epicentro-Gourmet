@@ -19,7 +19,7 @@ public class PersonalABM {
 		return instancia;
 	}
 	
-	public Personal traer(long idPersonal) {
+	public Personal traer(int idPersonal) {
 		return PersonalDao.getInstancia().traer(idPersonal);
 	}
 	

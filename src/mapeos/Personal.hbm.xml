@@ -4,7 +4,7 @@
         "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
    	<class name="datos.Personal" table="Personal">
-		<id column="idpersonal" name="idpersonal">
+		<id column="idPersonal" name="idPersonal">
 			<generator class="identity" />
 		</id>
 		<property name="nombre" column="Nombre" type="string" not-null="true"/>

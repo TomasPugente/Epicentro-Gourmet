@@ -58,7 +58,7 @@ public abstract class Dao<T> {
 		return lista;
 	}
 
-	public T traer(long idObjeto) {
+	public T traer(int idObjeto) {
 		T objeto = null;
 		try {
 			iniciaOperacion();
