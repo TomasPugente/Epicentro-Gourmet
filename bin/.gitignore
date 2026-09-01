@@ -1,5 +1,23 @@
+<<<<<<< Updated upstream
 /dao/
 /test/
 /datos/
 /negocio/
 /mapeos/
+=======
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Compilados
+bin/
+target/
+*.class
+
+# Logs
+*.log
+
+# Configuración sensible
+.env
+>>>>>>> Stashed changes
