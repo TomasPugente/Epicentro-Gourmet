@@ -51,7 +51,7 @@ public abstract class Personal {
 	}
 
 	public int getDni() {
-		return dni;
+		return dni;	
 	}
 
 	public void setDni(int dni) {
