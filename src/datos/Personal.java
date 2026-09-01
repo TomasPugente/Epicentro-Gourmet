@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public abstract class Personal {
-	protected int idpersonal;
+	protected int idPersonal;
 	protected String nombre;
 	protected String apellido;
 	protected int dni;
@@ -26,12 +26,12 @@ public abstract class Personal {
 		this.sueldoBase = sueldoBase;
 	}
 
-	public int getIdpersonal() {
-		return idpersonal;
+	public int getIdPersonal() {
+		return idPersonal;
 	}
 
-	public void setIdpersonal(int idpersonal) {
-		this.idpersonal = idpersonal;
+	public void setIdPersonal(int idpersonal) {
+		this.idPersonal = idpersonal;
 	}
 
 	public String getNombre() {
@@ -51,7 +51,7 @@ public abstract class Personal {
 	}
 
 	public int getDni() {
-		return dni;
+		return dni;	
 	}
 
 	public void setDni(int dni) {
@@ -84,7 +84,7 @@ public abstract class Personal {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellido, dni, fechaIngreso, fechaNacimiento, idpersonal, nombre, sueldoBase);
+		return Objects.hash(apellido, dni, fechaIngreso, fechaNacimiento, idPersonal, nombre, sueldoBase);
 	}
 
 	@Override
@@ -98,7 +98,7 @@ public abstract class Personal {
 		Personal other = (Personal) obj;
 		return Objects.equals(apellido, other.apellido) && dni == other.dni
 				&& Objects.equals(fechaIngreso, other.fechaIngreso)
-				&& Objects.equals(fechaNacimiento, other.fechaNacimiento) && idpersonal == other.idpersonal
+				&& Objects.equals(fechaNacimiento, other.fechaNacimiento) && idPersonal == other.idPersonal
 				&& Objects.equals(nombre, other.nombre)
 				&& Float.floatToIntBits(sueldoBase) == Float.floatToIntBits(other.sueldoBase);
 	}
