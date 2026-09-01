@@ -1,8 +1,8 @@
+
 # Eclipse
 .classpath
 .project
 .settings/
-
 # Compilados
 bin/
 target/
@@ -14,3 +14,8 @@ target/
 # Configuración sensible
 .env
 
+/dao/
+/datos/
+/negocio/
+/mapeos/
+/test/

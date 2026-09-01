@@ -15,7 +15,7 @@ public class TestTomy {
 		
 		//PersonalABM.getInstancia().agregar("Jorge", "Benavidez", 30123456, LocalDate.of(2004,2,2), LocalDate.of(2004, 2, 2), 1000, LocalTime.of(10, 0), LocalTime.of(18, 30),"Noche");;
 		
-		System.out.println(PersonalABM.getInstancia().traer(1));
+		System.out.println(PersonalABM.getInstancia().traerCajeros());
 	}
 
 }
