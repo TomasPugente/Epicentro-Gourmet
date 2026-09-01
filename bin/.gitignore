@@ -1,5 +1,26 @@
+<<<<<<< HEAD
 /datos/
 /dao/
+=======
+
+# Eclipse
+.classpath
+.project
+.settings/
+# Compilados
+bin/
+target/
+*.class
+
+# Logs
+*.log
+
+# Configuración sensible
+.env
+
+/dao/
+/datos/
+>>>>>>> main
 /negocio/
 /mapeos/
 /test/
