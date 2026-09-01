@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /dao/
 /test/
 /datos/
@@ -20,4 +21,9 @@ target/
 
 # Configuración sensible
 .env
+>>>>>>> Stashed changes
+=======
+/dao/
+/negocio/
+/datos/
 >>>>>>> Stashed changes
