@@ -18,6 +18,7 @@
     <!--Mapeo Entidades   -->
     <mapping resource="mapeos/Festival.hbm.xml"/>
     <mapping resource="mapeos/Personal.hbm.xml"/>
+    <mapping resource="mapeos/UnidadDeVenta.hbm.xml"/>
 
   </session-factory>
 </hibernate-configuration>
