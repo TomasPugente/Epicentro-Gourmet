@@ -13,3 +13,5 @@ target/
 
 # Configuración sensible
 .env
+/test/
+/mapeos/
