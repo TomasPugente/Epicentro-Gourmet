@@ -17,6 +17,8 @@
 		 
 		<set name="personal" table="Personal" order-by="idPersonal asc" inverse="true"
 			lazy="true" fetch="select">
+			<key column="idpersonal" not-null="true" />
+			lazy="false" fetch="select">
 			<key column="idUnidadDeVenta" not-null="true" />
 			<one-to-many class="datos.Personal" />
 		</set>

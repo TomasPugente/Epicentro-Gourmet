@@ -36,12 +36,17 @@ public class FoodTruck extends UnidadDeVenta {
 		this.usoElectricidad = usoElectricidad;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return " nombreComercial=" + nombreComercial + ", superficie=" + superficie + ", codigo="
-				+ codigo +  ", sueldoBase=" + sueldoBase + ", costoPorSuperficie="
-				+ costoPorSuperficie +" FoodTruck [patente=" + patente + ", usoElectricidad=" + usoElectricidad +"]";
+		return "FoodTruck [patente=" + patente + ", usoElectricidad=" + usoElectricidad + ", idUnidadDeVenta="
+				+ idUnidadDeVenta + ", nombreComercial=" + nombreComercial + ", superficie=" + superficie + ", codigo="
+				+ codigo + ", personal=" + personal + ", pedido=" + pedido + ", plato=" + plato +
+				", sueldoBase=" + sueldoBase + ", costoPorSuperficie=" + costoPorSuperficie + "]";
 	}
+
+	
 	
 	
 }
