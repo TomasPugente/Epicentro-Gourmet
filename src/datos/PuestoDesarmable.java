@@ -48,8 +48,7 @@ public class PuestoDesarmable extends UnidadDeVenta {
 	public String toString() {
 		return "PuestoDesarmable [cantidadCarpas=" + cantidadCarpas + ", tiempoMontaje=" + tiempoMontaje
 				+ ", costoPorMontaje=" + costoPorMontaje + ", idUnidadDeVenta=" + idUnidadDeVenta + ", nombreComercial="
-				+ nombreComercial + ", superficie=" + superficie + ", codigo=" + codigo + ", personal=" + personal
-				+ ", pedido=" + pedido + ", plato=" + plato + ", sueldoBase=" + sueldoBase
+				+ nombreComercial + ", superficie=" + superficie + ", codigo=" + codigo + ", pedido=" + pedido + ", plato=" + plato + ", sueldoBase=" + sueldoBase
 				+ ", costoPorSuperficie=" + costoPorSuperficie + "]";
 	}
 

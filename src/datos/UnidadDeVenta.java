@@ -114,7 +114,7 @@ public abstract class UnidadDeVenta {
 	@Override
 	public int hashCode() {
 		return Objects.hash(Integer.valueOf(codigo), Float.valueOf(costoPorSuperficie), Long.valueOf(idUnidadDeVenta),
-				nombreComercial, personal, Float.valueOf(sueldoBase), Float.valueOf(superficie));
+				nombreComercial, Float.valueOf(sueldoBase), Float.valueOf(superficie));
 	}
 
 	@Override
@@ -129,7 +129,6 @@ public abstract class UnidadDeVenta {
 		return codigo == other.codigo
 				&& Float.floatToIntBits(costoPorSuperficie) == Float.floatToIntBits(other.costoPorSuperficie)
 				&& idUnidadDeVenta == other.idUnidadDeVenta && Objects.equals(nombreComercial, other.nombreComercial)
-						&&Objects.equals(personal, other.personal)
 				&& Float.floatToIntBits(sueldoBase) == Float.floatToIntBits(other.sueldoBase)
 				&& Float.floatToIntBits(superficie) == Float.floatToIntBits(other.superficie);
 	}
@@ -137,7 +136,7 @@ public abstract class UnidadDeVenta {
 	@Override
 	public String toString() {
 		return "UnidadDeVenta [idUnidadDeVenta=" + idUnidadDeVenta + ", nombreComercial=" + nombreComercial
-				+ ", superficie=" + superficie + ", codigo=" + codigo + ", personal=" + personal + ", pedido=" + pedido
+				+ ", superficie=" + superficie + ", codigo=" + codigo + ", pedido=" + pedido
 				+ ", plato=" + plato + "sueldoBase=" + sueldoBase + ", costoPorSuperficie="
 				+ costoPorSuperficie + "]";
 	}

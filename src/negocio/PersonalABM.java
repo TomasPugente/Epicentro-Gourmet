@@ -72,4 +72,9 @@ public class PersonalABM {
 	public void eliminar(Personal personal) {
 		PersonalDao.getInstancia().eliminar(personal);
 	}
+	
+	public List<Personal> traerPersonalPorSueldoMenor(float sueldo)  throws Exception{
+        return PersonalDao.getInstancia().traerPersonalPorSueldoMenor(sueldo);
+    }
+	
 }

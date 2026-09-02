@@ -42,7 +42,7 @@ public class FoodTruck extends UnidadDeVenta {
 	public String toString() {
 		return "FoodTruck [patente=" + patente + ", usoElectricidad=" + usoElectricidad + ", idUnidadDeVenta="
 				+ idUnidadDeVenta + ", nombreComercial=" + nombreComercial + ", superficie=" + superficie + ", codigo="
-				+ codigo + ", personal=" + personal + ", pedido=" + pedido + ", plato=" + plato +
+				+ codigo + ", pedido=" + pedido + ", plato=" + plato +
 				", sueldoBase=" + sueldoBase + ", costoPorSuperficie=" + costoPorSuperficie + "]";
 	}
 
