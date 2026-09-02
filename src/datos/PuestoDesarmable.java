@@ -46,11 +46,14 @@ public class PuestoDesarmable extends UnidadDeVenta {
 
 	@Override
 	public String toString() {
-		return  " nombreComercial="
-				+ nombreComercial + ", superficie=" + superficie + ", codigo=" + codigo +
-				 ", sueldoBase=" + sueldoBase + ", costoPorSuperficie=" + costoPorSuperficie +"PuestoDesarmable [cantidadCarpas=" + cantidadCarpas + ", tiempoMontaje=" + tiempoMontaje
-				+ ", costoPorMontaje=" + costoPorMontaje;
+		return "PuestoDesarmable [cantidadCarpas=" + cantidadCarpas + ", tiempoMontaje=" + tiempoMontaje
+				+ ", costoPorMontaje=" + costoPorMontaje + ", idUnidadDeVenta=" + idUnidadDeVenta + ", nombreComercial="
+				+ nombreComercial + ", superficie=" + superficie + ", codigo=" + codigo + ", personal=" + personal
+				+ ", pedido=" + pedido + ", plato=" + plato + ", sueldoBase=" + sueldoBase
+				+ ", costoPorSuperficie=" + costoPorSuperficie + "]";
 	}
+
+	
 	
 	
 	

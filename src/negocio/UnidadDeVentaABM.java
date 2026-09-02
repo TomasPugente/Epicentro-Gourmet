@@ -13,7 +13,7 @@ import datos.UnidadDeVenta;
 import datos.Pedido;
 import datos.Plato;
 
-public class UnidadDeVentaABM {
+public class UnidadDeVentaABM   {
 	private static UnidadDeVentaABM instancia = null;
 	protected UnidadDeVentaABM() {
 		
@@ -65,4 +65,10 @@ public class UnidadDeVentaABM {
 		UnidadDeVentaDao.getInstancia().eliminar(u);
 	}
 	
+	public List<UnidadDeVenta> traerFestivalYUnidadDeVenta(float superficie) throws Exception {
+		
+     
+        return UnidadDeVentaDao.getInstancia().traerFestivalYUnidadDeVenta(superficie);
+    }
+
 }
