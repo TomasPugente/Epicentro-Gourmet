@@ -28,7 +28,7 @@ public abstract class Personal {
 		this.unidadDeVenta= unidadDeVenta;
 	}
 
-	public long getIdPersonal() {
+	public int getIdPersonal() {
 		return idPersonal;
 	}
 
@@ -97,7 +97,7 @@ public abstract class Personal {
 	@Override
 	public int hashCode() {
 		return Objects.hash(apellido, Integer.valueOf(dni), fechaIngreso, fechaNacimiento, Long.valueOf(idPersonal),
-				nombre, Float.valueOf(sueldoBase), unidadDeVenta);
+				nombre, Float.valueOf(sueldoBase));
 	}
 
 	@Override
@@ -113,8 +113,7 @@ public abstract class Personal {
 				&& Objects.equals(fechaIngreso, other.fechaIngreso)
 				&& Objects.equals(fechaNacimiento, other.fechaNacimiento) && idPersonal == other.idPersonal
 				&& Objects.equals(nombre, other.nombre)
-				&& Float.floatToIntBits(sueldoBase) == Float.floatToIntBits(other.sueldoBase)
-				&& Objects.equals(unidadDeVenta, other.unidadDeVenta);
+				&& Float.floatToIntBits(sueldoBase) == Float.floatToIntBits(other.sueldoBase);
 	}
 
 	@Override
