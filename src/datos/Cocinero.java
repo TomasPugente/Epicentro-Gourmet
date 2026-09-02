@@ -62,6 +62,11 @@ public class Cocinero extends Personal {
 				&& Float.floatToIntBits(plusPorCategoria) == Float.floatToIntBits(other.plusPorCategoria);
 	}
 
+	@Override
+	public String toString() {
+		return "Cocinero [especialidad=" + especialidad + ", plusPorCategoria=" + plusPorCategoria + "]";
+	}
+
 	
 
 	
