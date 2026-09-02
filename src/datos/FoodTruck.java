@@ -11,9 +11,9 @@ public class FoodTruck extends UnidadDeVenta {
 
 	
 
-	public FoodTruck(String nombreComercial, float superficie, int codigo, Personal personal,/* Pedido pedido,
-			Plato plato,*/ float sueldoBase, float costoPorSuperficie, String patente, float usoElectricidad) {
-		super(nombreComercial, superficie, codigo, personal/*, pedido, plato*/, sueldoBase, costoPorSuperficie);
+	public FoodTruck(String nombreComercial, float superficie, int codigo,
+			float sueldoBase, float costoPorSuperficie, String patente, float usoElectricidad) {
+		super(nombreComercial, superficie, codigo, sueldoBase, costoPorSuperficie);
 		this.patente = patente;
 		this.usoElectricidad = usoElectricidad;
 	}
@@ -39,7 +39,7 @@ public class FoodTruck extends UnidadDeVenta {
 	@Override
 	public String toString() {
 		return " nombreComercial=" + nombreComercial + ", superficie=" + superficie + ", codigo="
-				+ codigo + ", personal=" + personal + ", sueldoBase=" + sueldoBase + ", costoPorSuperficie="
+				+ codigo +  ", sueldoBase=" + sueldoBase + ", costoPorSuperficie="
 				+ costoPorSuperficie +" FoodTruck [patente=" + patente + ", usoElectricidad=" + usoElectricidad +"]";
 	}
 	

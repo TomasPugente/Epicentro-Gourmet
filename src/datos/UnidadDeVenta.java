@@ -1,16 +1,18 @@
 package datos;
 
 import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class UnidadDeVenta {
 	protected int idUnidadDeVenta;
 	protected String nombreComercial;
 	protected float superficie;
 	protected int codigo;
-	protected Personal personal;
-	/*protected Pedido pedido;
-	protected Plato plato;
-	*/
+	protected Set<Personal> personal= new HashSet<>();
+	protected Set<Pedido> pedido;
+	protected Set<Plato> plato;
+	
 	protected float sueldoBase;
 	protected float costoPorSuperficie;
 	
@@ -18,15 +20,12 @@ public abstract class UnidadDeVenta {
 		super();
 	}
 
-	public UnidadDeVenta( String nombreComercial, float superficie, int codigo, Personal personal,
-			/*Pedido pedido, Plato plato,*/ float sueldoBase, float costoPorSuperficie) {
+	public UnidadDeVenta( String nombreComercial, float superficie, int codigo,
+			 float sueldoBase, float costoPorSuperficie) {
 		super();
 		this.nombreComercial = nombreComercial;
 		this.superficie = superficie;
 		this.codigo = codigo;
-		this.personal = personal;
-		/*this.pedido = pedido;
-		this.plato = plato;*/
 		this.sueldoBase = sueldoBase;
 		this.costoPorSuperficie = costoPorSuperficie;
 	}
@@ -63,30 +62,30 @@ public abstract class UnidadDeVenta {
 		this.codigo = codigo;
 	}
 	
-	public Personal getPersonal() {
+	public Set<Personal> getPersonal() {
 		return personal;
 	}
 
-	public void setPersonal(Personal personal) {
+	public void setPersonal(Set<Personal> personal) {
 		this.personal = personal;
 	}
-	/*
-	public Pedido getPedido() {
+	
+	public Set<Pedido> getPedido() {
 		return pedido;
 	}
 
-	public void setPedido(Pedido pedido) {
+	public void setPedido(Set<Pedido> pedido) {
 		this.pedido = pedido;
 	}
 
-	public Plato getPlato() {
+	public Set<Plato> getPlato() {
 		return plato;
 	}
 
-	public void setPlato(Plato plato) {
+	public void setPlato(Set<Plato> plato) {
 		this.plato = plato;
 	}
-	*/
+	
 	public float getSueldoBase() {
 		return sueldoBase;
 	}

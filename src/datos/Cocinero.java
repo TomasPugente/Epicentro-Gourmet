@@ -19,8 +19,8 @@ public class Cocinero extends Personal {
 	}
 
 	public Cocinero(String nombre, String apellido, int dni, LocalDate fechaNacimiento, LocalDate fechaIngreso,
-			float sueldoBase, String especialidad, float plusPorCategoria) {
-		super(nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase);
+			float sueldoBase,UnidadDeVenta unidadDeVenta, String especialidad, float plusPorCategoria) {
+		super(nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase,unidadDeVenta);
 		this.especialidad = especialidad;
 		this.plusPorCategoria = plusPorCategoria;
 	}

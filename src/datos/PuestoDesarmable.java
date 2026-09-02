@@ -11,9 +11,9 @@ public class PuestoDesarmable extends UnidadDeVenta {
 	}
 
 	public PuestoDesarmable( String nombreComercial, float superficie, int codigo,
-			Personal personal,/* Pedido pedido, Plato plato,*/ float sueldoBase, float costoPorSuperficie,
+		  float sueldoBase, float costoPorSuperficie,
 			int cantidadCarpas, int tiempoMontaje, float costoPorMontaje) {
-		super(nombreComercial, superficie, codigo, personal,/* pedido, plato,*/ sueldoBase,
+		super(nombreComercial, superficie, codigo, sueldoBase,
 				costoPorSuperficie);
 		this.cantidadCarpas = cantidadCarpas;
 		this.tiempoMontaje = tiempoMontaje;
@@ -47,8 +47,8 @@ public class PuestoDesarmable extends UnidadDeVenta {
 	@Override
 	public String toString() {
 		return  " nombreComercial="
-				+ nombreComercial + ", superficie=" + superficie + ", codigo=" + codigo + ", personal=" + personal
-				+ ", sueldoBase=" + sueldoBase + ", costoPorSuperficie=" + costoPorSuperficie +"PuestoDesarmable [cantidadCarpas=" + cantidadCarpas + ", tiempoMontaje=" + tiempoMontaje
+				+ nombreComercial + ", superficie=" + superficie + ", codigo=" + codigo +
+				 ", sueldoBase=" + sueldoBase + ", costoPorSuperficie=" + costoPorSuperficie +"PuestoDesarmable [cantidadCarpas=" + cantidadCarpas + ", tiempoMontaje=" + tiempoMontaje
 				+ ", costoPorMontaje=" + costoPorMontaje;
 	}
 	
