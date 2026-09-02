@@ -10,10 +10,10 @@ public class PuestoDesarmable extends UnidadDeVenta {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PuestoDesarmable( String nombreComercial, float superficie, int codigo,
+	public PuestoDesarmable( String nombreComercial, float superficie, int codigo, Festival festival,
 		  float sueldoBase, float costoPorSuperficie,
 			int cantidadCarpas, int tiempoMontaje, float costoPorMontaje) {
-		super(nombreComercial, superficie, codigo, sueldoBase,
+		super(nombreComercial, superficie, codigo, festival,sueldoBase,
 				costoPorSuperficie);
 		this.cantidadCarpas = cantidadCarpas;
 		this.tiempoMontaje = tiempoMontaje;

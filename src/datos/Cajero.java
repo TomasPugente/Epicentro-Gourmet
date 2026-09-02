@@ -66,6 +66,18 @@ public class Cajero extends Personal {
 		return Objects.equals(horaEntrada, other.horaEntrada) && Objects.equals(horaSalida, other.horaSalida)
 				&& Objects.equals(turno, other.turno);
 	}
+
+	@Override
+	public String toString() {
+		return "Cajero [horaEntrada=" + horaEntrada + ", horaSalida=" + horaSalida + ", turno=" + turno
+				+ ", idPersonal=" + idPersonal + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ ", fechaNacimiento=" + fechaNacimiento + ", fechaIngreso=" + fechaIngreso + ", sueldoBase="
+				+ sueldoBase + ", unidadDeVenta=" + unidadDeVenta + "]";
+	}
+
+	
+
+	
 	
 	
 	

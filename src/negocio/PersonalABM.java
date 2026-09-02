@@ -53,6 +53,11 @@ public class PersonalABM {
 		return PersonalDao.getInstancia().traer(idPersonal);
 		}
 	
+	public List<Personal> traerCajerosTurnoNoche() throws Exception {
+		return PersonalDao.getInstancia().traerCajerosTurnoNoche();
+	}
+	
+	
 	public int agregar(String nombre, String apellido, int dni, LocalDate fechaNacimiento, LocalDate fechaIngreso,
 			float sueldoBase,UnidadDeVenta unidadDeVenta, String especialidad, float plusPorCategoria) {
 		return PersonalDao.getInstancia().agregar(new Cocinero(nombre, apellido, dni, fechaNacimiento, fechaIngreso,sueldoBase ,unidadDeVenta,especialidad, plusPorCategoria));

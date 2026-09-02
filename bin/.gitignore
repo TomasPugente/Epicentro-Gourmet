@@ -1,14 +1,5 @@
-# Eclipse
-.classpath
-.project
-.settings/
-# Compilados
-bin/
-target/
-*.class
-
-# Logs
-*.log
-
-# Configuración sensible
-.env
+/dao/
+/negocio/
+/test/
+/datos/
+/mapeos/

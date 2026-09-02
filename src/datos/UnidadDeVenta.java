@@ -12,7 +12,7 @@ public abstract class UnidadDeVenta {
 	protected Set<Personal> personal= new HashSet<>();
 	protected Set<Pedido> pedido;
 	protected Set<Plato> plato;
-	
+	protected Festival festival;
 	protected float sueldoBase;
 	protected float costoPorSuperficie;
 	
@@ -20,12 +20,13 @@ public abstract class UnidadDeVenta {
 		super();
 	}
 
-	public UnidadDeVenta( String nombreComercial, float superficie, int codigo,
+	public UnidadDeVenta( String nombreComercial, float superficie, int codigo,Festival festival,
 			 float sueldoBase, float costoPorSuperficie) {
 		super();
 		this.nombreComercial = nombreComercial;
 		this.superficie = superficie;
 		this.codigo = codigo;
+		this.festival = festival;
 		this.sueldoBase = sueldoBase;
 		this.costoPorSuperficie = costoPorSuperficie;
 	}
@@ -85,7 +86,15 @@ public abstract class UnidadDeVenta {
 	public void setPlato(Set<Plato> plato) {
 		this.plato = plato;
 	}
-	
+
+	public Festival getFestival() {
+		return festival;
+	}
+
+	public void setFestival(Festival festival) {
+		this.festival = festival;
+	}
+
 	public float getSueldoBase() {
 		return sueldoBase;
 	}
