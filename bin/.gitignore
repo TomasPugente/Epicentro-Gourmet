@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Eclipse
 .classpath
 .project
@@ -15,3 +16,10 @@ target/
 .env
 /test/
 /mapeos/
+=======
+/dao/
+/datos/
+/mapeos/
+/negocio/
+/test/
+>>>>>>> Stashed changes

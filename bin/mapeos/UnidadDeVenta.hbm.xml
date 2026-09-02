@@ -1,0 +1,57 @@
+<<<<<<< Updated upstream
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+   	<class name="datos.UnidadDeVenta" table="UnidadDeVenta">
+		<id column="idUnidadDeVenta" name="idUnidadDeVenta">
+			<generator class="identity" />
+		</id>
+		<property name="nombreComercial" column="NombreComercial" type="string" not-null="true"/>
+		<property name="superficie" column="Superficie" type="float" not-null="true"/>
+		<property name="codigo" column="Codigo" type="int" not-null="true"/>
+		<property name="sueldoBase" column="SueldoBase" type="float" not-null="true"/>
+		<property name="costoPorSuperficie" column="CostoPorSuperficie" type="float" not-null="true"/>
+		<many-to-one name="festival" class="datos.Festival" column="idfestival"
+			not-null="true"/>
+		 
+		 
+		<set name="personal" table="Personal" order-by="idPersonal asc" inverse="true"
+			lazy="true" fetch="select">
+			<key column="idUnidadDeVenta" not-null="true" />
+			<one-to-many class="datos.Personal" />
+		</set>
+	
+		<set name="pedido" table="Pedido" order-by="idPedido asc" inverse="true"
+			lazy="true" fetch="select">
+			<key column="idPedido" not-null="true" />
+			<one-to-many class="datos.Pedido" />
+		</set>
+		<set name="plato" table="Plato" order-by="idPlato asc" inverse="true"
+			lazy="true" fetch="select">
+			<key column="idPlato" not-null="true" />
+			<one-to-many class="datos.Plato" />
+		</set>
+		
+		
+		
+		
+		<joined-subclass name="datos.PuestoDesarmable" table="PuestoDesarmable">
+				<key column="idPuestoDesarmable" />
+				<property name="cantidadCarpas" column="CantidadCarpas" type="int" not-null="true"/>
+				<property name="tiempoMontaje" column="TiempoMontaje" type="int" not-null="true"/>
+				<property name="costoPorMontaje" column="CostoPorMontaje" type="float" not-null="true"/>
+		</joined-subclass>
+		
+		<joined-subclass name="datos.FoodTruck" table="FoodTruck">
+				<key column="idFoodTruck" />
+				<property name="patente" column="Patente" type="string" not-null="true"/>
+				<property name="usoElectricidad" column="UsoElectricidad" type="float" not-null="true"/>
+		</joined-subclass>
+		
+	</class>
+
+</hibernate-mapping>
+>>>>>>> Stashed changes

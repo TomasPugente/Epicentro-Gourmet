@@ -14,5 +14,11 @@
 		<property name="fechainicio" column="FechaInicio" type="LocalDate" not-null="true"/>
 		<property name="fechafin" column="Fechafin" type="LocalDate" not-null="true"/>
 		
+		<set name="unidadDeVenta" table="Unidad de Venta" order-by="idUnidadDeVenta asc" inverse="true"
+		lazy="false" fetch="select">
+			<key column="idfestival" not-null="true" />
+			<one-to-many class="datos.UnidadDeVenta" />
+		</set>
+		
 	</class>
 </hibernate-mapping>
