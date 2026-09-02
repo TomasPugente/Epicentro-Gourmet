@@ -17,17 +17,19 @@
 		 
 		<set name="personal" table="Personal" order-by="idPersonal asc" inverse="true"
 			lazy="true" fetch="select">
+			<key column="idpersonal" not-null="true" />
+			lazy="false" fetch="select">
 			<key column="idUnidadDeVenta" not-null="true" />
 			<one-to-many class="datos.Personal" />
 		</set>
 	
 		<set name="pedido" table="Pedido" order-by="idPedido asc" inverse="true"
-			lazy="true" fetch="select">
+			lazy="false" fetch="select">
 			<key column="idPedido" not-null="true" />
 			<one-to-many class="datos.Pedido" />
 		</set>
 		<set name="plato" table="Plato" order-by="idPlato asc" inverse="true"
-			lazy="true" fetch="select">
+			lazy="false" fetch="select">
 			<key column="idPlato" not-null="true" />
 			<one-to-many class="datos.Plato" />
 		</set>
