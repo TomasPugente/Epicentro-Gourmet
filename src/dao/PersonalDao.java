@@ -5,35 +5,57 @@ import datos.Personal;
 import datos.Cajero;
 
 public class PersonalDao extends Dao<Personal> {
-	private static PersonalDao instancia = null;
-	
-	private PersonalDao() {
-		super();
-	}
-	
-	public static PersonalDao getInstancia() {
-		if(instancia==null) {
-			instancia= new PersonalDao();
-		}
-		
-		return instancia;
-	
-	}
-	
-	public List<Personal> traerCajerosTurnoNoche() throws Exception {
-		 List<Personal> lista = null;
-	        try {
-	            iniciaOperacion();
-	            String hql = "from Cajero c where c.turno = :turno";
-	            lista = session.createQuery(hql, Personal.class)
-	                    .setParameter("turno", "noche")
-	                    .getResultList();
-	        } finally {
-	            session.close();
-	        }
-	        return lista;
-		
-	}
-	
+    private static PersonalDao instancia = null;
+
+    private PersonalDao() {
+        super();
+    }
+
+    public static PersonalDao getInstancia() {
+        if(instancia==null) {
+            instancia= new PersonalDao();
+        }
+
+        return instancia;
+
+    }
+
+    public List<Personal> traerCajerosTurnoNoche() throws Exception {
+         List<Personal> lista = null;
+            try {
+                iniciaOperacion();
+                String hql = "from Cajero c where c.turno = :turno";
+                lista = session.createQuery(hql, Personal.class)
+                        .setParameter("turno", "noche")
+                        .getResultList();
+            } finally {
+                session.close();
+            }
+            return lista;
+
+    }
+    public List<Personal> traerPersonalPorSueldoMenor(float sueldo) throws Exception {
+
+        List<Personal> lista = null;
+
+        try {
+
+            iniciaOperacion();
+
+            String hql = "from Personal c where c.sueldoBase <= :sueldo";
+
+            lista = session.createQuery(hql, Personal.class)
+                    .setParameter("sueldo", sueldo)
+                    .getResultList();
+
+        } finally {
+
+            session.close();
+
+        }
+
+        return lista;
+    }
+
 
 }
