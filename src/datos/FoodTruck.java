@@ -11,9 +11,9 @@ public class FoodTruck extends UnidadDeVenta {
 
 	
 
-	public FoodTruck(String nombreComercial, float superficie, int codigo,
+	public FoodTruck(String nombreComercial, float superficie, int codigo, Festival festival,
 			float sueldoBase, float costoPorSuperficie, String patente, float usoElectricidad) {
-		super(nombreComercial, superficie, codigo, sueldoBase, costoPorSuperficie);
+		super(nombreComercial, superficie, codigo,festival,sueldoBase, costoPorSuperficie);
 		this.patente = patente;
 		this.usoElectricidad = usoElectricidad;
 	}

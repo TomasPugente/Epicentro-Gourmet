@@ -6,6 +6,7 @@ import java.util.List;
 import dao.PersonalDao;
 import dao.UnidadDeVentaDao;
 import datos.Cajero;
+import datos.Festival;
 import datos.FoodTruck;
 import datos.Personal;
 import datos.PuestoDesarmable;
@@ -52,12 +53,12 @@ public class UnidadDeVentaABM {
 		return puestoDesarmable;
 	}
 	
-	public int agregarFoodTruck(String nombreComercial, float superficie, int codigo, float sueldoBase, float costoPorSuperficie, String patente, float usoElectricidad) {
-		return UnidadDeVentaDao.getInstancia().agregar(new FoodTruck(nombreComercial, superficie, codigo, sueldoBase, costoPorSuperficie, patente, usoElectricidad));
+	public int agregarFoodTruck(String nombreComercial, float superficie, int codigo, Festival festival,float sueldoBase, float costoPorSuperficie, String patente, float usoElectricidad) {
+		return UnidadDeVentaDao.getInstancia().agregar(new FoodTruck(nombreComercial, superficie, codigo, festival,sueldoBase, costoPorSuperficie, patente, usoElectricidad));
 	}
 	
-	public int agregarPuestoDesarmable(String nombreComercial, float superficie, int codigo, float sueldoBase, float costoPorSuperficie, int cantidadCarpas, int tiempoMontaje, float costoPorMontaje) {
-		return UnidadDeVentaDao.getInstancia().agregar(new PuestoDesarmable(nombreComercial, superficie, codigo, sueldoBase, costoPorSuperficie, cantidadCarpas, tiempoMontaje, costoPorMontaje));
+	public int agregarPuestoDesarmable(String nombreComercial, float superficie, int codigo, Festival festival,float sueldoBase, float costoPorSuperficie, int cantidadCarpas, int tiempoMontaje, float costoPorMontaje) {
+		return UnidadDeVentaDao.getInstancia().agregar(new PuestoDesarmable(nombreComercial, superficie, codigo, festival,sueldoBase, costoPorSuperficie, cantidadCarpas, tiempoMontaje, costoPorMontaje));
 	}
 	
 	public void eliminar(int idUnidadDeVenta) {
