@@ -11,14 +11,14 @@ public class TestTizi {
 		session.beginTransaction();
 		session.close();
 		System.out.println("OK");
-		/*
+		
 		FestivalABM.getInstancia().agregar("Feria de las naciones", "Primavera" ,LocalDate.now(), LocalDate.now());
 		FestivalABM.getInstancia().agregar("Feria del libro", "Verano" ,LocalDate.now(), LocalDate.now());
 		//FestivalABM.getInstancia().eliminar(5);
-		UnidadDeVentaABM.getinstancia().agregarFoodTruck("Taquitos al pastor", 12, 10, 200, FestivalABM.getInstancia().traer(1), 12, "h2bc34", 20);
-		UnidadDeVentaABM.getinstancia().agregarFoodTruck("Ian´s Burguer", 12, 10, 200, FestivalABM.getInstancia().traer(1), 12, "ina2a2", 20);
+		UnidadDeVentaABM.getinstancia().agregarFoodTruck("Taquitos al pastor", 12, 10, FestivalABM.getInstancia().traer(1), 200, 12, "h2bc34", 20);
+		UnidadDeVentaABM.getinstancia().agregarFoodTruck("Ian´s Burguer", 12, 10, FestivalABM.getInstancia().traer(1), 200, 12, "ina2a2", 20);
 		
-		*/
+		
 		
 		System.out.println(FestivalABM.getInstancia().traer(1));
 	}

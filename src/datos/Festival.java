@@ -89,6 +89,12 @@ public class Festival {
 				&& idfestival == other.idfestival && Objects.equals(nombre, other.nombre)
 				&& Objects.equals(temporada, other.temporada);
 	}
+
+	@Override
+	public String toString() {
+		return "Festival [idfestival=" + idfestival + ", nombre=" + nombre + ", temporada=" + temporada
+				+ ", fechainicio=" + fechainicio + ", fechafin=" + fechafin + ", unidadDeVenta=" + unidadDeVenta + "]";
+	}
 	
 	
 	

@@ -10,14 +10,14 @@
 		<property name="nombreComercial" column="NombreComercial" type="string" not-null="true"/>
 		<property name="superficie" column="Superficie" type="float" not-null="true"/>
 		<property name="codigo" column="Codigo" type="int" not-null="true"/>
-		
-		
+		<many-to-one name="festival" class="datos.Festival" column="idfestival"
+			not-null="true"/>
 		<property name="sueldoBase" column="SueldoBase" type="float" not-null="true"/>
 		<property name="costoPorSuperficie" column="CostoPorSuperficie" type="float" not-null="true"/>
 		 
 		<set name="personal" table="Personal" order-by="idPersonal asc" inverse="true"
 			lazy="true" fetch="select">
-			<key column="idpersonal" not-null="true" />
+			<key column="idUnidadDeVenta" not-null="true" />
 			<one-to-many class="datos.Personal" />
 		</set>
 	
