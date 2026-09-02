@@ -25,18 +25,6 @@ public class TestUnidadDeVenta {
 		System.out.println("OK");
 		
 		try {
-		/*
-			FestivalABM.getInstancia().agregar("Feria de las naciones", "Primavera" ,LocalDate.now(), LocalDate.now());
-	        FestivalABM.getInstancia().agregar("Feria del libro", "Verano" ,LocalDate.now(), LocalDate.now());
-
-			UnidadDeVentaABM.getinstancia().agregarFoodTruck("Taquitos al pastor", 12, 10, FestivalABM.getInstancia().traer(1), 200, 12, "h2bc34", 20);
-			UnidadDeVentaABM.getinstancia().agregarFoodTruck("Ian´s Burguer", 10, 10, FestivalABM.getInstancia().traer(1), 200, 12, "ina2a2", 20);
-			*/
-		//System.out.println(UnidadDeVentaABM.getinstancia().traer(1));
-		//System.out.println(UnidadDeVentaABM.getinstancia().traer(2));
-			//System.out.println(UnidadDeVentaABM.getinstancia().traerFoodTruck());
-			//System.out.println(UnidadDeVentaABM.getinstancia().traerPuestoDesarmable());
-			//UnidadDeVentaABM.getinstancia().eliminar(1);
 			List<UnidadDeVenta> lista = UnidadDeVentaABM.getinstancia().traerFestivalYUnidadDeVenta(11);
 			for (UnidadDeVenta u : lista) { System.out.println("Nombre: " + u.getNombreComercial());
 			System.out.println("Superficie: " + u.getSuperficie());
