@@ -2,6 +2,7 @@ package dao;
 import java.util.List;
 
 import datos.Personal;
+import datos.Cajero;
 
 public class PersonalDao extends Dao<Personal> {
 	private static PersonalDao instancia = null;
@@ -17,6 +18,21 @@ public class PersonalDao extends Dao<Personal> {
 		
 		return instancia;
 	
+	}
+	
+	public List<Personal> traerCajerosTurnoNoche() throws Exception {
+		 List<Personal> lista = null;
+	        try {
+	            iniciaOperacion();
+	            String hql = "from Cajero c where c.turno = :turno";
+	            lista = session.createQuery(hql, Personal.class)
+	                    .setParameter("turno", "noche")
+	                    .getResultList();
+	        } finally {
+	            session.close();
+	        }
+	        return lista;
+		
 	}
 	
 

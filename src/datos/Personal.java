@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public abstract class Personal {
-	protected long idPersonal;
+	protected int idPersonal;
 	protected String nombre;
 	protected String apellido;
 	protected int dni;
@@ -32,7 +32,7 @@ public abstract class Personal {
 		return idPersonal;
 	}
 
-	public void setIdPersonal(long idpersonal) {
+	public void setIdPersonal(int idpersonal) {
 		this.idPersonal = idpersonal;
 	}
 
@@ -115,6 +115,13 @@ public abstract class Personal {
 				&& Objects.equals(nombre, other.nombre)
 				&& Float.floatToIntBits(sueldoBase) == Float.floatToIntBits(other.sueldoBase)
 				&& Objects.equals(unidadDeVenta, other.unidadDeVenta);
+	}
+
+	@Override
+	public String toString() {
+		return "Personal [idPersonal=" + idPersonal + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ ", fechaNacimiento=" + fechaNacimiento + ", fechaIngreso=" + fechaIngreso + ", sueldoBase="
+				+ sueldoBase + ", unidadDeVenta=" + unidadDeVenta + "]";
 	}
 
 
