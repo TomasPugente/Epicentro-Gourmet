@@ -10,13 +10,14 @@ public abstract class Personal {
 	protected LocalDate fechaNacimiento;
 	protected LocalDate fechaIngreso;
 	protected float sueldoBase;
+	protected UnidadDeVenta unidadDeVenta;
 	
 	public Personal() {
 		super();
 	}
 
 	public Personal(String nombre, String apellido, int dni, LocalDate fechaNacimiento,
-			LocalDate fechaIngreso, float sueldoBase) {
+			LocalDate fechaIngreso, float sueldoBase,UnidadDeVenta unidadDeVenta) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -24,6 +25,7 @@ public abstract class Personal {
 		this.fechaNacimiento = fechaNacimiento;
 		this.fechaIngreso = fechaIngreso;
 		this.sueldoBase = sueldoBase;
+		this.unidadDeVenta= unidadDeVenta;
 	}
 
 	public long getIdPersonal() {
@@ -81,10 +83,21 @@ public abstract class Personal {
 	public void setSueldoBase(float sueldoBase) {
 		this.sueldoBase = sueldoBase;
 	}
+	
+	
+
+	public UnidadDeVenta getUnidadDeVenta() {
+		return unidadDeVenta;
+	}
+
+	public void setUnidadDeVenta(UnidadDeVenta unidadDeVenta) {
+		this.unidadDeVenta = unidadDeVenta;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(apellido, dni, fechaIngreso, fechaNacimiento, idPersonal, nombre, sueldoBase);
+		return Objects.hash(apellido, Integer.valueOf(dni), fechaIngreso, fechaNacimiento, Long.valueOf(idPersonal),
+				nombre, Float.valueOf(sueldoBase), unidadDeVenta);
 	}
 
 	@Override
@@ -100,8 +113,11 @@ public abstract class Personal {
 				&& Objects.equals(fechaIngreso, other.fechaIngreso)
 				&& Objects.equals(fechaNacimiento, other.fechaNacimiento) && idPersonal == other.idPersonal
 				&& Objects.equals(nombre, other.nombre)
-				&& Float.floatToIntBits(sueldoBase) == Float.floatToIntBits(other.sueldoBase);
+				&& Float.floatToIntBits(sueldoBase) == Float.floatToIntBits(other.sueldoBase)
+				&& Objects.equals(unidadDeVenta, other.unidadDeVenta);
 	}
+
+
 	
 	
 	

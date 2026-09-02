@@ -9,6 +9,7 @@ import dao.PersonalDao;
 import datos.Cajero;
 import datos.Cocinero;
 import datos.Personal;
+import datos.UnidadDeVenta;
 
 public class PersonalABM {
 	private static PersonalABM instancia = null;
@@ -53,14 +54,14 @@ public class PersonalABM {
 		}
 	
 	public int agregar(String nombre, String apellido, int dni, LocalDate fechaNacimiento, LocalDate fechaIngreso,
-			float sueldoBase, String especialidad, float plusPorCategoria) {
-		return PersonalDao.getInstancia().agregar(new Cocinero(nombre, apellido, dni, fechaNacimiento, fechaIngreso,sueldoBase ,especialidad, plusPorCategoria));
+			float sueldoBase,UnidadDeVenta unidadDeVenta, String especialidad, float plusPorCategoria) {
+		return PersonalDao.getInstancia().agregar(new Cocinero(nombre, apellido, dni, fechaNacimiento, fechaIngreso,sueldoBase ,unidadDeVenta,especialidad, plusPorCategoria));
 		}
 	
 	
 	public int agregar(String nombre, String apellido, int dni, LocalDate fechaNacimiento, LocalDate fechaIngreso,
-			float sueldoBase, LocalTime horaEntrada, LocalTime horaSalida, String turno) {
-		return PersonalDao.getInstancia().agregar(new Cajero(nombre, apellido, dni, fechaNacimiento, fechaIngreso,sueldoBase, horaEntrada,horaSalida, turno));
+			float sueldoBase,UnidadDeVenta unidadDeVenta, LocalTime horaEntrada, LocalTime horaSalida, String turno) {
+		return PersonalDao.getInstancia().agregar(new Cajero(nombre, apellido, dni, fechaNacimiento, fechaIngreso,sueldoBase,unidadDeVenta, horaEntrada,horaSalida, turno));
 		}
 	
 	public void eliminar(Personal personal) {

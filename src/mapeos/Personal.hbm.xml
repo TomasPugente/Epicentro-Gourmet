@@ -14,6 +14,8 @@
 		<property name="fechaIngreso" column="FechaIngreso" type="LocalDate" not-null="true"/>
 		<property name="sueldoBase" column="SueldoBase" type="float" not-null="true"/>
 		
+		<many-to-one name="unidadDeVenta" class="datos.UnidadDeVenta" column="idUnidadDeVenta" not-null="false" />
+		
 		<joined-subclass name="datos.Cajero" table="Cajero">
 				<key column="idCajero" />
 				<property name="horaEntrada" column="HoraEntrada" type="LocalTime" not-null="true"/>

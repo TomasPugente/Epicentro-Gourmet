@@ -19,7 +19,7 @@ public class PedidoABM {
 	}
 
 	public Pedido traer(int idPedido) {
-		return PedidoDao.getInstancia().traer((long) idPedido);
+		return PedidoDao.getInstancia().traer((int) idPedido);
 	}
 
 	public Pedido traerPedidoConPlatos(int idPedido) {

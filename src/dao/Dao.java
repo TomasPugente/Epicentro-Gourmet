@@ -38,8 +38,8 @@ public abstract class Dao<T> {
 		List<T> lista = null;
 		try {
 			iniciaOperacion();
-			lista = session.createQuery("from :clase", clasePersistente)
-						.setParameter("clase", clasePersistente.getName()).getResultList();
+			lista = session.createQuery("from " + clasePersistente.getName())
+			        .getResultList();
 		} finally {
 			session.close();
 		}
@@ -58,7 +58,7 @@ public abstract class Dao<T> {
 		return lista;
 	}
 
-	public T traer(long idObjeto) {
+	public T traer(int idObjeto) {
 		T objeto = null;
 		try {
 			iniciaOperacion();

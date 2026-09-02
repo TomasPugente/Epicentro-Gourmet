@@ -14,8 +14,8 @@ public class Cajero extends Personal {
 	}
 
 	public Cajero(String nombre, String apellido, int dni, LocalDate fechaNacimiento, LocalDate fechaIngreso,
-			float sueldoBase, LocalTime horaEntrada, LocalTime horaSalida, String turno) {
-		super(nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase);
+			float sueldoBase,UnidadDeVenta unidadDeVenta, LocalTime horaEntrada, LocalTime horaSalida, String turno) {
+		super(nombre, apellido, dni, fechaNacimiento, fechaIngreso, sueldoBase,unidadDeVenta);
 		this.horaEntrada = horaEntrada;
 		this.horaSalida = horaSalida;
 		this.turno = turno;

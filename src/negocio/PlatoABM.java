@@ -18,7 +18,7 @@ public class PlatoABM {
 	}
 
 	public Plato traer(int idPlato) {
-		return PlatoDao.getInstancia().traer((long) idPlato);
+		return PlatoDao.getInstancia().traer((int) idPlato);
 	}
 
 	public List<Plato> traer() {
