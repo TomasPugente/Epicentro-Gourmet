@@ -30,4 +30,9 @@ public class FestivalABM{
 		return FestivalDao.getinstancia().traer(idfestival);
 		}
 	
+	public void eliminar(int idfestival ) {
+		Festival festival = FestivalABM.getInstancia().traer(idfestival);
+		FestivalDao.getinstancia().eliminar(festival);
+	}
+	
 }
