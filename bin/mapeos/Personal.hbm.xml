@@ -17,14 +17,14 @@
 		<many-to-one name="unidadDeVenta" class="datos.UnidadDeVenta" column="idUnidadDeVenta" not-null="false" />
 		
 		<joined-subclass name="datos.Cajero" table="Cajero">
-				<key column="idCajero" />
+				<key column="idPersonal" />
 				<property name="horaEntrada" column="HoraEntrada" type="LocalTime" not-null="true"/>
 				<property name="horaSalida" column="HoraSalida" type="LocalTime" not-null="true"/>
 				<property name="turno" column="Turno" type="string" not-null="true"/>
 		</joined-subclass>
 		
 		<joined-subclass name="datos.Cocinero" table="Cocinero">
-				<key column="idCocinero" />
+				<key column="idPersonal" />
 				<property name="especialidad" column="Especialidad" type="string" not-null="true"/>
 				<property name="plusPorCategoria" column="PlusPorCategoria" type="float" not-null="true"/>
 		</joined-subclass>
