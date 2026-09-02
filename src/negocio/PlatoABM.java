@@ -1,5 +1,6 @@
 package negocio;
 
+import java.time.LocalDate;
 import java.util.List;
 import dao.PlatoDao;
 import datos.Pedido;
@@ -44,5 +45,9 @@ public class PlatoABM {
 			throw new Exception("El plato a eliminar no existe.");
 		}
 		PlatoDao.getInstancia().eliminar(p);
+	}
+	
+	public List<Plato> traerPorFecha(LocalDate fecha) {
+	    return PlatoDao.getInstancia().traerPlatosPorFecha(fecha);
 	}
 }

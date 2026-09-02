@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import dao.HibernateUtil;
 import negocio.PedidoABM;
 import negocio.PlatoABM;
+import negocio.UnidadDeVentaABM;
 import datos.Pedido;
 import datos.Plato;
 
@@ -20,7 +21,7 @@ public class Test {
 		try {
 			System.out.println("\n=== INICIO DE PRUEBAS PEDIDO Y PLATO ===");
 
-			int idPedido = PedidoABM.getInstancia().agregar(LocalDate.now(), null);
+			int idPedido = PedidoABM.getInstancia().agregar(LocalDate.now(), UnidadDeVentaABM.getinstancia().traer(1));
 			System.out.println("Pedido agregado exitosamente con ID: " + idPedido);
 
 			Pedido pedidoGuardado = PedidoABM.getInstancia().traer(idPedido);

@@ -50,4 +50,10 @@ public class PedidoABM {
 		}
 		PedidoDao.getInstancia().eliminar(p);
 	}
+	
+	public List<Pedido> traer(LocalDate fecha) {
+	    return PedidoDao.getInstancia().traerPorFecha(fecha);
+	}
+	
+	
 }

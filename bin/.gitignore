@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Eclipse
 .classpath
 .project
@@ -14,3 +15,9 @@ target/
 # Configuración sensible
 .env
 
+=======
+/negocio/
+/dao/
+/test/
+/mapeos/
+>>>>>>> Stashed changes
