@@ -23,7 +23,13 @@ public class TestTizi {
 		
 		//System.out.println(FestivalABM.getInstancia().traer(1));
 		
-		System.out.println(PersonalABM.getInstancia().traerCajerosTurnoNoche());
+		//System.out.println(PersonalABM.getInstancia().traerCajerosTurnoNoche());
+		
+		//System.out.println("El costo total de la Unidad de Venta es: " + UnidadDeVentaABM.getinstancia().calcularCostoTotal(1));
+		
+		System.out.println("El total de cajeros en la Unidad de Venta en los distintos turnos son: " + UnidadDeVentaABM.getinstancia().cantidadCajerosPorTurno(1));
+		
+		
 	}
 
 }

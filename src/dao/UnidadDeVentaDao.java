@@ -2,6 +2,8 @@ package dao;
 import java.util.List;
 
 import datos.Festival;
+import datos.FoodTruck;
+import  datos.PuestoDesarmable;
 import datos.Plato;
 import datos.UnidadDeVenta;
 public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
@@ -32,5 +34,12 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
         }
         return lista;
     }
+	
+
+
+	
+	
+	
+	
 	
 }
