@@ -96,9 +96,4 @@ public class Festival {
 				+ ", fechainicio=" + fechainicio + ", fechafin=" + fechafin + ", unidadDeVenta=" + unidadDeVenta + "]";
 	}
 	
-	
-	
-	
-	
-	
 }
