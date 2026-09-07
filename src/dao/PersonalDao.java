@@ -2,7 +2,6 @@ package dao;
 import java.util.List;
 
 import datos.Personal;
-import datos.Cajero;
 
 public class PersonalDao extends Dao<Personal> {
     private static PersonalDao instancia = null;
