@@ -140,8 +140,6 @@ public class UnidadDeVentaABM {
 	}
 	
 
-		return cantidadPorTurno;
-	}
 
 	public List<UnidadDeVenta> traerUnidadesPorFestival(int idFestival) throws Exception {
 		return UnidadDeVentaDao.getInstancia().traerUnidadesPorFestival(idFestival);

@@ -59,7 +59,6 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	
 }
 	
-}
 	@SuppressWarnings("unchecked")
 	public List<UnidadDeVenta> traerUnidadesPorFestival(int idFestival) throws Exception {
 	    List<UnidadDeVenta> lista = null;

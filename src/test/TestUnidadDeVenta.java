@@ -30,7 +30,7 @@ public class TestUnidadDeVenta {
 			System.out.println("\n=== Festivales con mayor cantidad de ventas ===");
 			
 			
-			List<UnidadDeVenta> lista = UnidadDeVentaABM.getinstancia().traerFestivalYUnidadDeVenta(11);
+			List<UnidadDeVenta> lista = UnidadDeVentaABM.getInstancia().traerFestivalYUnidadDeVenta(11);
 			for (UnidadDeVenta u : lista) { System.out.println("Nombre: " + u.getNombreComercial());
 			System.out.println("Superficie: " + u.getSuperficie());
 			System.out.println("Código: " + u.getCodigo());
@@ -48,7 +48,7 @@ public class TestUnidadDeVenta {
 			    System.out.println("---------------------------");
 			}
 			
-			List<FoodTruck> listaFoodTrucks =UnidadDeVentaABM.getinstancia().traerFoodTrucksQueRequierenElectricidad();
+			List<FoodTruck> listaFoodTrucks =UnidadDeVentaABM.getInstancia().traerFoodTrucksQueRequierenElectricidad();
 
 					System.out.println("\n=== FOOD TRUCKS QUE REQUIEREN ELECTRICIDAD ===");
 

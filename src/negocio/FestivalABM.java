@@ -35,8 +35,7 @@ public class FestivalABM{
 	
 	public List<Festival> traerFestivalesConMayorCantidadDeVentas() {
 
-	    return FestivalDao.getinstancia()
-	            .traerFestivalesConMayorCantidadDeVentas();
+	    return FestivalDao.getinstancia().traerFestivalesConMayorCantidadDeVentas();
 	}
 	
 }
