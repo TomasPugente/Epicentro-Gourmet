@@ -5,69 +5,72 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import dao.PersonalDao;
 import dao.UnidadDeVentaDao;
 import datos.Cajero;
 import datos.Festival;
 import datos.FoodTruck;
+import datos.Pedido;
 import datos.Personal;
+import datos.Plato;
 import datos.PuestoDesarmable;
 import datos.UnidadDeVenta;
-import datos.Pedido;
-import datos.Plato;
 
-public class UnidadDeVentaABM   {
+public class UnidadDeVentaABM {
 	private static UnidadDeVentaABM instancia = null;
+
 	protected UnidadDeVentaABM() {
-		
 	}
-	public static UnidadDeVentaABM getinstancia() {
-		if(instancia==null) {
-			instancia= new UnidadDeVentaABM();
+
+	public static UnidadDeVentaABM getInstancia() {
+		if (instancia == null) {
+			instancia = new UnidadDeVentaABM();
 		}
 		return instancia;
 	}
-	public List<UnidadDeVenta> traer(){
+
+	public List<UnidadDeVenta> traer() {
 		return UnidadDeVentaDao.getInstancia().traer();
 	}
-	
+
 	public UnidadDeVenta traer(int idUnidadDeVenta) {
 		return UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
 	}
-	
-	public List<UnidadDeVenta> traerFoodTruck(){
-		List<UnidadDeVenta> unidadDeVenta =UnidadDeVentaDao.getInstancia().traer();
-		List<UnidadDeVenta> foodTruck= new ArrayList<>();
+
+	public List<UnidadDeVenta> traerFoodTruck() {
+		List<UnidadDeVenta> unidadDeVenta = UnidadDeVentaDao.getInstancia().traer();
+		List<UnidadDeVenta> foodTruck = new ArrayList<>();
 		for (UnidadDeVenta u : unidadDeVenta) {
-			if(u instanceof FoodTruck)
-		    foodTruck.add(u);
+			if (u instanceof FoodTruck) {
+				foodTruck.add(u);
+			}
 		}
 		return foodTruck;
 	}
-	
-	public List<UnidadDeVenta> traerPuestoDesarmable(){
-		List<UnidadDeVenta> unidadDeVenta =UnidadDeVentaDao.getInstancia().traer();
-		List<UnidadDeVenta> puestoDesarmable= new ArrayList<>();
+
+	public List<UnidadDeVenta> traerPuestoDesarmable() {
+		List<UnidadDeVenta> unidadDeVenta = UnidadDeVentaDao.getInstancia().traer();
+		List<UnidadDeVenta> puestoDesarmable = new ArrayList<>();
 		for (UnidadDeVenta u : unidadDeVenta) {
-			if(u instanceof PuestoDesarmable)
-		    puestoDesarmable.add(u);
+			if (u instanceof PuestoDesarmable) {
+				puestoDesarmable.add(u);
+			}
 		}
 		return puestoDesarmable;
 	}
-	
-	public int agregarFoodTruck(String nombreComercial, float superficie, int codigo, Festival festival,float sueldoBase, float costoPorSuperficie, String patente, float usoElectricidad) {
-		return UnidadDeVentaDao.getInstancia().agregar(new FoodTruck(nombreComercial, superficie, codigo, festival,sueldoBase, costoPorSuperficie, patente, usoElectricidad));
+
+	public int agregarFoodTruck(String nombreComercial, float superficie, int codigo, Festival festival, float sueldoBase, float costoPorSuperficie, String patente, float usoElectricidad) {
+		return UnidadDeVentaDao.getInstancia().agregar(new FoodTruck(nombreComercial, superficie, codigo, festival, sueldoBase, costoPorSuperficie, patente, usoElectricidad));
 	}
-	
-	public int agregarPuestoDesarmable(String nombreComercial, float superficie, int codigo, Festival festival,float sueldoBase, float costoPorSuperficie, int cantidadCarpas, int tiempoMontaje, float costoPorMontaje) {
-		return UnidadDeVentaDao.getInstancia().agregar(new PuestoDesarmable(nombreComercial, superficie, codigo, festival,sueldoBase, costoPorSuperficie, cantidadCarpas, tiempoMontaje, costoPorMontaje));
+
+	public int agregarPuestoDesarmable(String nombreComercial, float superficie, int codigo, Festival festival, float sueldoBase, float costoPorSuperficie, int cantidadCarpas, int tiempoMontaje, float costoPorMontaje) {
+		return UnidadDeVentaDao.getInstancia().agregar(new PuestoDesarmable(nombreComercial, superficie, codigo, festival, sueldoBase, costoPorSuperficie, cantidadCarpas, tiempoMontaje, costoPorMontaje));
 	}
-	
+
 	public void eliminar(int idUnidadDeVenta) {
-		UnidadDeVenta u= UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
+		UnidadDeVenta u = UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
 		UnidadDeVentaDao.getInstancia().eliminar(u);
 	}
-	
+
 	public List<UnidadDeVenta> traerFestivalYUnidadDeVenta(float superficie) throws Exception {
 		
      
@@ -137,4 +140,29 @@ public class UnidadDeVentaABM   {
 	}
 	
 
+		return cantidadPorTurno;
+	}
+
+	public List<UnidadDeVenta> traerUnidadesPorFestival(int idFestival) throws Exception {
+		return UnidadDeVentaDao.getInstancia().traerUnidadesPorFestival(idFestival);
+	}
+	
+	public List<PuestoDesarmable> traerPuestosConTiempoMontajeMayorA(int tiempoLimite) throws Exception {
+	    return UnidadDeVentaDao.getInstancia().traerPuestosConTiempoMontajeMayorA(tiempoLimite);
+	}
+	
+	public float calcularIngresosDeUnidadDeVenta(int idUnidadDeVenta) {
+		UnidadDeVenta unidadDeVenta= UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
+		float ingresos=0;
+		for( Pedido pedido: unidadDeVenta.getPedido()) {
+			for(Plato plato: pedido.getPlatos()) {
+				ingresos+=plato.getPrecioVenta(); 
+			}
+			
+		}
+		
+		return ingresos;
+	}
+	
+	
 }
