@@ -26,6 +26,10 @@ public class TestUnidadDeVenta {
 		System.out.println("OK");
 		
 		try {
+			
+			System.out.println("\n=== Festivales con mayor cantidad de ventas ===");
+			
+			
 			List<UnidadDeVenta> lista = UnidadDeVentaABM.getinstancia().traerFestivalYUnidadDeVenta(11);
 			for (UnidadDeVenta u : lista) { System.out.println("Nombre: " + u.getNombreComercial());
 			System.out.println("Superficie: " + u.getSuperficie());
@@ -34,7 +38,7 @@ public class TestUnidadDeVenta {
 			
 			List<Festival> lista1 = FestivalABM.getInstancia().traerFestivalesConMayorCantidadDeVentas();
 
-			System.out.println("\n=== Festivales con mayor cantidad de ventas ===");
+			
 			
 			for (Festival f : lista1) {
 			    System.out.println("Festival: " + f.getNombre());
