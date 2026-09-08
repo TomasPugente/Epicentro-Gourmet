@@ -9,7 +9,9 @@ import dao.UnidadDeVentaDao;
 import datos.Cajero;
 import datos.Festival;
 import datos.FoodTruck;
+import datos.Pedido;
 import datos.Personal;
+import datos.Plato;
 import datos.PuestoDesarmable;
 import datos.UnidadDeVenta;
 
@@ -117,5 +119,19 @@ public class UnidadDeVentaABM {
 	public List<PuestoDesarmable> traerPuestosConTiempoMontajeMayorA(int tiempoLimite) throws Exception {
 	    return UnidadDeVentaDao.getInstancia().traerPuestosConTiempoMontajeMayorA(tiempoLimite);
 	}
+	
+	public float calcularIngresosDeUnidadDeVenta(int idUnidadDeVenta) {
+		UnidadDeVenta unidadDeVenta= UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
+		float ingresos=0;
+		for( Pedido pedido: unidadDeVenta.getPedido()) {
+			for(Plato plato: pedido.getPlatos()) {
+				ingresos+=plato.getPrecioVenta(); 
+			}
+			
+		}
+		
+		return ingresos;
+	}
+	
 	
 }

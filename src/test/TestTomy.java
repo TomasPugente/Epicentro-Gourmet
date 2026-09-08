@@ -5,6 +5,7 @@ import java.time.LocalTime;
 
 import datos.Cajero;
 import negocio.PersonalABM;
+import negocio.UnidadDeVentaABM;
 
 public class TestTomy {
 
@@ -15,9 +16,9 @@ public class TestTomy {
 		
 		//PersonalABM.getInstancia().agregar("Jorge", "Benavidez", 30123456, LocalDate.of(2004,2,2), LocalDate.of(2004, 2, 2), 1000, LocalTime.of(10, 0), LocalTime.of(18, 30),"Noche");;
 		
-		System.out.println(PersonalABM.getInstancia().traerCajeros());
+		System.out.println(UnidadDeVentaABM.getInstancia().calcularIngresosDeUnidadDeVenta(1));
 		
-		System.out.println(PersonalABM.getInstancia().traerPersonalPorSueldoMenor(50000));
+		//System.out.println(PersonalABM.getInstancia().traerPersonalPorSueldoMenor(50000));
 	}
 
 }
