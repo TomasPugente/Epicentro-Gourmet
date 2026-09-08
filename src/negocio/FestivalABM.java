@@ -2,6 +2,8 @@ package negocio;
 import java.time.LocalDate;
 import dao.FestivalDao;
 import datos.Festival;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FestivalABM{
 
@@ -29,6 +31,12 @@ public class FestivalABM{
 	public void eliminar(int idfestival ) {
 		Festival festival = FestivalABM.getInstancia().traer(idfestival);
 		FestivalDao.getinstancia().eliminar(festival);
+	}
+	
+	public List<Festival> traerFestivalesConMayorCantidadDeVentas() {
+
+	    return FestivalDao.getinstancia()
+	            .traerFestivalesConMayorCantidadDeVentas();
 	}
 	
 }

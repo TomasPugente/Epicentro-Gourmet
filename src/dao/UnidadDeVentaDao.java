@@ -5,6 +5,9 @@ import org.hibernate.HibernateException;
 
 import datos.PuestoDesarmable;
 import datos.UnidadDeVenta;
+import datos.FoodTruck;
+import org.hibernate.HibernateException;
+import java.util.ArrayList;
 
 public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	private static UnidadDeVentaDao instancia = null;
@@ -36,6 +39,27 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
         return lista;
     }
 	
+	
+	public List<FoodTruck> traerFoodTrucksQueRequierenElectricidad() throws HibernateException {
+		List<FoodTruck> lista = null;
+		try {
+		iniciaOperacion();
+
+		    String hql = "from FoodTruck f where f.usoElectricidad > 0";
+
+		    lista = session.createQuery(hql, FoodTruck.class)
+		            .getResultList();
+
+		} finally {
+		    session.close();
+		}
+
+		return lista;
+
+	
+}
+	
+}
 	@SuppressWarnings("unchecked")
 	public List<UnidadDeVenta> traerUnidadesPorFestival(int idFestival) throws Exception {
 	    List<UnidadDeVenta> lista = null;

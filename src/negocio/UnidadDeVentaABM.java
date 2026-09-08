@@ -72,42 +72,73 @@ public class UnidadDeVentaABM {
 	}
 
 	public List<UnidadDeVenta> traerFestivalYUnidadDeVenta(float superficie) throws Exception {
-		return UnidadDeVentaDao.getInstancia().traerFestivalYUnidadDeVenta(superficie);
-	}
-
+		
+     
+        return UnidadDeVentaDao.getInstancia().traerFestivalYUnidadDeVenta(superficie);
+    }
+	
 	public float calcularCostoTotal(int idUnidadDeVenta) {
-		UnidadDeVenta u = UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
-		float costoTotal = u.getSueldoBase() + u.getCostoPorSuperficie();
 
-		if (u instanceof FoodTruck) {
-			FoodTruck foodTruck = (FoodTruck) u;
-			costoTotal += foodTruck.getUsoElectricidad();
-		}
+	    UnidadDeVenta u = UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
 
-		if (u instanceof PuestoDesarmable) {
-			PuestoDesarmable puestoDesarmable = (PuestoDesarmable) u;
-			costoTotal += puestoDesarmable.getCostoPorMontaje();
-		}
+	    float costoTotal = 0;
 
-		return costoTotal;
+	    costoTotal = u.getSueldoBase() + u.getCostoPorSuperficie();
+
+	    if (u instanceof FoodTruck) {
+
+	        FoodTruck foodTruck = (FoodTruck) u;
+
+	        costoTotal += foodTruck.getUsoElectricidad();
+
+	    }
+
+	    if (u instanceof PuestoDesarmable) {
+
+	        PuestoDesarmable puestoDesarmable = (PuestoDesarmable) u;
+
+	        costoTotal += puestoDesarmable.getCostoPorMontaje();
+
+	    }
+
+	    return costoTotal;
 	}
+
 
 	public Map<String, Integer> cantidadCajerosPorTurno(int idUnidadDeVenta) {
-		UnidadDeVenta u = UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
-		Map<String, Integer> cantidadPorTurno = new HashMap<>();
 
-		for (Personal p : u.getPersonal()) {
-			if (p instanceof Cajero) {
-				Cajero cajero = (Cajero) p;
-				String turno = cajero.getTurno();
+	    UnidadDeVenta u = UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
 
-				if (cantidadPorTurno.containsKey(turno)) {
-					cantidadPorTurno.put(turno, cantidadPorTurno.get(turno) + 1);
-				} else {
-					cantidadPorTurno.put(turno, 1);
-				}
-			}
-		}
+	    Map<String, Integer> cantidadPorTurno = new HashMap<>();
+
+	    for (Personal p : u.getPersonal()) {
+
+	        if (p instanceof Cajero) {
+
+	            Cajero cajero = (Cajero) p;
+
+	            String turno = cajero.getTurno();
+
+	            if (cantidadPorTurno.containsKey(turno)) {
+
+	                cantidadPorTurno.put(turno, cantidadPorTurno.get(turno) + 1);
+
+	            } else {
+
+	                cantidadPorTurno.put(turno, 1);
+
+	            }
+	        }
+	    }
+
+	    return cantidadPorTurno;
+	}
+
+	
+	public List<FoodTruck> traerFoodTrucksQueRequierenElectricidad(){
+		return UnidadDeVentaDao.getInstancia().traerFoodTrucksQueRequierenElectricidad();
+	}
+	
 
 		return cantidadPorTurno;
 	}
