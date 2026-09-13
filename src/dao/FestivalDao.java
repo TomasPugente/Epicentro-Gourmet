@@ -1,5 +1,6 @@
 package dao;
 import datos.Festival;
+import datos.Pedido;
 import datos.Plato;
 import org.hibernate.HibernateException;
 import java.util.ArrayList;
@@ -54,5 +55,9 @@ public class FestivalDao extends Dao<Festival> {
 
 		return lista;
 	}
+	
+	
+
+	
 }
 	

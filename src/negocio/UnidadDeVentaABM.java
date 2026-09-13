@@ -149,18 +149,12 @@ public class UnidadDeVentaABM {
 	    return UnidadDeVentaDao.getInstancia().traerPuestosConTiempoMontajeMayorA(tiempoLimite);
 	}
 	
-	public float calcularIngresosDeUnidadDeVenta(int idUnidadDeVenta) {
-		UnidadDeVenta unidadDeVenta= UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
-		float ingresos=0;
-		for( Pedido pedido: unidadDeVenta.getPedido()) {
-			for(Plato plato: pedido.getPlatos()) {
-				ingresos+=plato.getPrecioVenta(); 
-			}
-			
-		}
-		
-		return ingresos;
+
+	public List<Pedido> traerPedidosDeUnidadDeVentaEnFestival(int idUnidadDeVenta, int idFestival){
+		return UnidadDeVentaDao.getInstancia().traerPedidosDeUnidadDeVentaEnFestival(idUnidadDeVenta, idFestival);
 	}
+	
+	
 	
 	
 }

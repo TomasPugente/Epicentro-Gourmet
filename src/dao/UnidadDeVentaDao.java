@@ -6,6 +6,8 @@ import org.hibernate.HibernateException;
 import datos.PuestoDesarmable;
 import datos.UnidadDeVenta;
 import datos.FoodTruck;
+import datos.Pedido;
+
 import org.hibernate.HibernateException;
 import java.util.ArrayList;
 
@@ -93,6 +95,32 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	    } finally {
 	        session.close();
 	    }
+	    return lista;
+	}
+	
+	public List<Pedido> traerPedidosDeUnidadDeVentaEnFestival(int idUnidadDeVenta, int idFestival)
+	        throws HibernateException {
+
+	    List<Pedido> lista = null;
+
+	    try {
+	        iniciaOperacion();
+
+	        String hql = "SELECT p " +
+	                     "FROM UnidadDeVenta u " +
+	                     "JOIN u.pedido p " +
+	                     "WHERE u.idUnidadDeVenta = :idUnidadDeVenta " +
+	                     "AND u.festival.idfestival = :idFestival";
+
+	        lista = session.createQuery(hql, Pedido.class)
+	                .setParameter("idUnidadDeVenta", idUnidadDeVenta)
+	                .setParameter("idFestival", idFestival)
+	                .getResultList();
+
+	    } finally {
+	        session.close();
+	    }
+
 	    return lista;
 	}
 }
