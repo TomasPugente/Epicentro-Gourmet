@@ -95,4 +95,41 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	    }
 	    return lista;
 	}
+	
+	public float calcularCostoTotal(int idUnidadDeVenta) {
+
+	    float costoTotal = 0;
+
+	    try {
+	        iniciaOperacion();
+
+	        String sql =
+	                "SELECT u.SueldoBase " +
+	                "+ u.CostoPorSuperficie " +
+	                "+ COALESCE(f.UsoElectricidad, 0) " +
+	                "+ COALESCE(p.CostoPorMontaje, 0) " +
+	                "FROM UnidadDeVenta u " +
+	                "LEFT JOIN FoodTruck f " +
+	                "ON u.idUnidadDeVenta = f.idUnidadDeVenta " +
+	                "LEFT JOIN PuestoDesarmable p " +
+	                "ON u.idUnidadDeVenta = p.idUnidadDeVenta " +
+	                "WHERE u.idUnidadDeVenta = :id";
+
+	        Number resultado = (Number) session.createSQLQuery(sql)
+	                .setParameter("id", idUnidadDeVenta)
+	                .uniqueResult();
+
+	        if (resultado != null) {
+	            costoTotal = resultado.floatValue();
+	        }
+
+	    } finally {
+	        session.close();
+	    }
+
+	    return costoTotal;
+	}
+	
+	
+	
 }
