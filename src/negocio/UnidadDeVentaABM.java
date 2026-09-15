@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import dao.FestivalDao;
 import dao.UnidadDeVentaDao;
 import datos.Cajero;
 import datos.Festival;
@@ -77,56 +78,27 @@ public class UnidadDeVentaABM {
         return UnidadDeVentaDao.getInstancia().traerFestivalYUnidadDeVenta(superficie);
     }
 	
-	public float calcularCostoTotal(int idUnidadDeVenta) {
 
-	    UnidadDeVenta u = UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
+	public Map<String, Integer> cantidadCajerosPorTurno(int idFestival) {
 
-	    float costoTotal = 0;
-
-	    costoTotal = u.getSueldoBase() + u.getCostoPorSuperficie();
-
-	    if (u instanceof FoodTruck) {
-
-	        FoodTruck foodTruck = (FoodTruck) u;
-
-	        costoTotal += foodTruck.getUsoElectricidad();
-
-	    }
-
-	    if (u instanceof PuestoDesarmable) {
-
-	        PuestoDesarmable puestoDesarmable = (PuestoDesarmable) u;
-
-	        costoTotal += puestoDesarmable.getCostoPorMontaje();
-
-	    }
-
-	    return costoTotal;
-	}
-
-
-	public Map<String, Integer> cantidadCajerosPorTurno(int idUnidadDeVenta) {
-
-	    UnidadDeVenta u = UnidadDeVentaDao.getInstancia().traer(idUnidadDeVenta);
+	    Festival festival = FestivalDao.getinstancia().traer(idFestival);
 
 	    Map<String, Integer> cantidadPorTurno = new HashMap<>();
 
-	    for (Personal p : u.getPersonal()) {
+	    for (UnidadDeVenta u : festival.getUnidadDeVenta()) {
 
-	        if (p instanceof Cajero) {
+	        for (Personal p : u.getPersonal()) {
 
-	            Cajero cajero = (Cajero) p;
+	            if (p instanceof Cajero) {
 
-	            String turno = cajero.getTurno();
+	                Cajero cajero = (Cajero) p;
+	                String turno = cajero.getTurno();
 
-	            if (cantidadPorTurno.containsKey(turno)) {
-
-	                cantidadPorTurno.put(turno, cantidadPorTurno.get(turno) + 1);
-
-	            } else {
-
-	                cantidadPorTurno.put(turno, 1);
-
+	                if (cantidadPorTurno.containsKey(turno)) {
+	                    cantidadPorTurno.put(turno, cantidadPorTurno.get(turno) + 1);
+	                } else {
+	                    cantidadPorTurno.put(turno, 1);
+	                }
 	            }
 	        }
 	    }
@@ -140,15 +112,13 @@ public class UnidadDeVentaABM {
 	}
 	
 
-		return cantidadPorTurno;
-	}
 
 	public List<UnidadDeVenta> traerUnidadesPorFestival(int idFestival) throws Exception {
 		return UnidadDeVentaDao.getInstancia().traerUnidadesPorFestival(idFestival);
 	}
 	
-	public List<PuestoDesarmable> traerPuestosConTiempoMontajeMayorA(int tiempoLimite) throws Exception {
-	    return UnidadDeVentaDao.getInstancia().traerPuestosConTiempoMontajeMayorA(tiempoLimite);
+	public List<PuestoDesarmable> traerPuestosDesarmables(Festival festival, int tiempoDesde, int tiempoHasta) throws Exception {
+	    return UnidadDeVentaDao.getInstancia().traerPuestosDesarmables(festival, tiempoDesde, tiempoHasta);
 	}
 	
 	public float calcularIngresosDeUnidadDeVenta(int idUnidadDeVenta) {
@@ -163,6 +133,12 @@ public class UnidadDeVentaABM {
 		
 		return ingresos;
 	}
+	
+	public float calcularCostoTotal(int idUnidadDeVenta){
+		return UnidadDeVentaDao.getInstancia().calcularCostoTotal(idUnidadDeVenta);
+	}
+	
+	
 	
 	
 }
