@@ -39,9 +39,7 @@ public class TestUnidadDeVenta {
 			LocalDate fechaInicio = LocalDate.of(2026, 1, 1);
 			LocalDate fechaFin = LocalDate.of(2027, 12, 12);
 			
-			List<Object[]> lista1 = FestivalABM.getInstancia()
-			        .traerFestivalesConMayorCantidadDeVentas(
-			                fechaInicio, fechaFin);
+			List<Object[]> lista1 = FestivalABM.getInstancia().traerFestivalesConMayorCantidadDeVentas(fechaInicio, fechaFin);
 
 			for (Object[] fila : lista1) {
 
