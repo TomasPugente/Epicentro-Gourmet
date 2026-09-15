@@ -1,5 +1,6 @@
 package dao;
 import datos.Festival;
+import datos.Pedido;
 import datos.Plato;
 import org.hibernate.HibernateException;
 
@@ -58,5 +59,9 @@ public class FestivalDao extends Dao<Festival> {
 
 	    return lista;
 	}
+	
+	
+
+	
 }
 	

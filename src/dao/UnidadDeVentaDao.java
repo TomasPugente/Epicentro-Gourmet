@@ -7,6 +7,10 @@ import datos.PuestoDesarmable;
 import datos.UnidadDeVenta;
 import datos.Festival;
 import datos.FoodTruck;
+import datos.Pedido;
+
+import org.hibernate.HibernateException;
+import java.util.ArrayList;
 
 public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	private static UnidadDeVentaDao instancia = null;
@@ -101,13 +105,35 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	    return lista;
 	}
 	
-	public float calcularCostoTotal(int idUnidadDeVenta) {
-
-	    float costoTotal = 0;
+	public List<Pedido> traerPedidosDeUnidadDeVentaEnFestival(int idUnidadDeVenta, int idFestival) throws HibernateException {
+	    List<Pedido> lista = null;
 
 	    try {
 	        iniciaOperacion();
 
+	        String hql = "SELECT p " +
+	                     "FROM UnidadDeVenta u " +
+	                     "JOIN u.pedido p " +
+	                     "WHERE u.idUnidadDeVenta = :idUnidadDeVenta " +
+	                     "AND u.festival.idfestival = :idFestival";
+
+	        lista = session.createQuery(hql, Pedido.class)
+	                .setParameter("idUnidadDeVenta", idUnidadDeVenta)
+	                .setParameter("idFestival", idFestival)
+	                .getResultList();
+
+	    } finally {
+	        session.close();
+	    }
+
+	    return lista;
+	}
+
+		public float calcularCostoTotal(int idUnidadDeVenta) {
+
+	    float costoTotal = 0;
+        	    try {
+	        iniciaOperacion();
 	        String sql =
 	                "SELECT u.SueldoBase " +
 	                "+ u.CostoPorSuperficie " +
@@ -127,14 +153,8 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	        if (resultado != null) {
 	            costoTotal = resultado.floatValue();
 	        }
-
-	    } finally {
-	        session.close();
-	    }
-
-	    return costoTotal;
+              }
+		    return costoTotal;
 	}
-	
-	
 	
 }
