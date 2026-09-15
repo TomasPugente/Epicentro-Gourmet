@@ -5,6 +5,7 @@ import org.hibernate.HibernateException;
 
 import datos.PuestoDesarmable;
 import datos.UnidadDeVenta;
+import datos.Festival;
 import datos.FoodTruck;
 import datos.Pedido;
 
@@ -61,6 +62,7 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	
 }
 	
+	//caso de uso: uno a muchos
 	@SuppressWarnings("unchecked")
 	public List<UnidadDeVenta> traerUnidadesPorFestival(int idFestival) throws Exception {
 	    List<UnidadDeVenta> lista = null;
@@ -81,14 +83,19 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	    return lista;
 	}
 	
+	//correccion herencia: festival, tiempo desde, tiempo hasta
 	@SuppressWarnings("unchecked")
-	public List<PuestoDesarmable> traerPuestosConTiempoMontajeMayorA(int tiempoLimite) throws Exception {
+	public List<PuestoDesarmable> traerPuestosDesarmables(Festival festival, int tiempoDesde, int tiempoHasta) throws Exception {
 	    List<PuestoDesarmable> lista = null;
 	    try {
 	        iniciaOperacion();
-	        String hql = "from PuestoDesarmable p where p.tiempoMontaje > :tiempoLimite";
+	        String hql = "from PuestoDesarmable p where p.festival = :festival "
+	                   + "and p.tiempoMontaje between :tiempoDesde and :tiempoHasta";
+	        
 	        lista = session.createQuery(hql)
-	                       .setParameter("tiempoLimite", tiempoLimite)
+	                       .setParameter("festival", festival)
+	                       .setParameter("tiempoDesde", tiempoDesde)
+	                       .setParameter("tiempoHasta", tiempoHasta)
 	                       .list();
 	    } catch (HibernateException e) {
 	        manejaExcepcion(e);
@@ -98,9 +105,7 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	    return lista;
 	}
 	
-	public List<Pedido> traerPedidosDeUnidadDeVentaEnFestival(int idUnidadDeVenta, int idFestival)
-	        throws HibernateException {
-
+	public List<Pedido> traerPedidosDeUnidadDeVentaEnFestival(int idUnidadDeVenta, int idFestival) throws HibernateException {
 	    List<Pedido> lista = null;
 
 	    try {
@@ -123,4 +128,33 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 
 	    return lista;
 	}
+
+		public float calcularCostoTotal(int idUnidadDeVenta) {
+
+	    float costoTotal = 0;
+        	    try {
+	        iniciaOperacion();
+	        String sql =
+	                "SELECT u.SueldoBase " +
+	                "+ u.CostoPorSuperficie " +
+	                "+ COALESCE(f.UsoElectricidad, 0) " +
+	                "+ COALESCE(p.CostoPorMontaje, 0) " +
+	                "FROM UnidadDeVenta u " +
+	                "LEFT JOIN FoodTruck f " +
+	                "ON u.idUnidadDeVenta = f.idUnidadDeVenta " +
+	                "LEFT JOIN PuestoDesarmable p " +
+	                "ON u.idUnidadDeVenta = p.idUnidadDeVenta " +
+	                "WHERE u.idUnidadDeVenta = :id";
+
+	        Number resultado = (Number) session.createSQLQuery(sql)
+	                .setParameter("id", idUnidadDeVenta)
+	                .uniqueResult();
+
+	        if (resultado != null) {
+	            costoTotal = resultado.floatValue();
+	        }
+              }
+		    return costoTotal;
+	}
+	
 }

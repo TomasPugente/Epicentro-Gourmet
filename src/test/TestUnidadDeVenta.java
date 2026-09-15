@@ -27,24 +27,32 @@ public class TestUnidadDeVenta {
 		
 		try {
 			
-			System.out.println("\n=== Festivales con mayor cantidad de ventas ===");
+			System.out.println("\n=== Festivales con mayor cantidad de ventas dentro de estas fechas ===");
 			
-			
+			/*
 			List<UnidadDeVenta> lista = UnidadDeVentaABM.getInstancia().traerFestivalYUnidadDeVenta(11);
 			for (UnidadDeVenta u : lista) { System.out.println("Nombre: " + u.getNombreComercial());
 			System.out.println("Superficie: " + u.getSuperficie());
 			System.out.println("Código: " + u.getCodigo());
 			System.out.println("Festival: " + u.getFestival().getNombre()); }
+			*/
+			LocalDate fechaInicio = LocalDate.of(2026, 1, 1);
+			LocalDate fechaFin = LocalDate.of(2027, 12, 12);
 			
-			List<Festival> lista1 = FestivalABM.getInstancia().traerFestivalesConMayorCantidadDeVentas();
+			List<Object[]> lista1 = FestivalABM.getInstancia()
+			        .traerFestivalesConMayorCantidadDeVentas(
+			                fechaInicio, fechaFin);
 
-			
-			
-			for (Festival f : lista1) {
+			for (Object[] fila : lista1) {
+
+			    Festival f = (Festival) fila[0];
+			    Long cantidadVentas = (Long) fila[1];
+
 			    System.out.println("Festival: " + f.getNombre());
 			    System.out.println("Temporada: " + f.getTemporada());
 			    System.out.println("Fecha inicio: " + f.getFechainicio());
 			    System.out.println("Fecha fin: " + f.getFechafin());
+			    System.out.println("Cantidad de ventas: " + cantidadVentas);
 			    System.out.println("---------------------------");
 			}
 			
