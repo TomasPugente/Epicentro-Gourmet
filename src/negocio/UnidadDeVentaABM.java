@@ -145,8 +145,8 @@ public class UnidadDeVentaABM {
 		return UnidadDeVentaDao.getInstancia().traerUnidadesPorFestival(idFestival);
 	}
 	
-	public List<PuestoDesarmable> traerPuestosConTiempoMontajeMayorA(int tiempoLimite) throws Exception {
-	    return UnidadDeVentaDao.getInstancia().traerPuestosConTiempoMontajeMayorA(tiempoLimite);
+	public List<PuestoDesarmable> traerPuestosDesarmables(Festival festival, int tiempoDesde, int tiempoHasta) throws Exception {
+	    return UnidadDeVentaDao.getInstancia().traerPuestosDesarmables(festival, tiempoDesde, tiempoHasta);
 	}
 	
 	public float calcularIngresosDeUnidadDeVenta(int idUnidadDeVenta) {
