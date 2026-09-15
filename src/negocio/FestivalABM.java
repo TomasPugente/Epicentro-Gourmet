@@ -33,9 +33,9 @@ public class FestivalABM{
 		FestivalDao.getinstancia().eliminar(festival);
 	}
 	
-	public List<Festival> traerFestivalesConMayorCantidadDeVentas() {
+	public List<Object[]> traerFestivalesConMayorCantidadDeVentas(LocalDate fechaInicio,LocalDate fechaFin) {
 
-	    return FestivalDao.getinstancia().traerFestivalesConMayorCantidadDeVentas();
+	    return FestivalDao.getinstancia().traerFestivalesConMayorCantidadDeVentas(fechaInicio, fechaFin);
 	}
 	
 }
