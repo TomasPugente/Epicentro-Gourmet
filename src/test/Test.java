@@ -1,13 +1,13 @@
 package test;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.Session;
 import dao.HibernateUtil;
+import negocio.FestivalABM;
 import negocio.PedidoABM;
-import negocio.PlatoABM;
 import negocio.UnidadDeVentaABM;
+import datos.Festival;
 import datos.Pedido;
 import datos.Plato;
 import datos.PuestoDesarmable;
@@ -41,13 +41,14 @@ public class Test {
 				System.out.println("Unidad: " + uv.getNombreComercial() + " | Personal: " + cantPersonal);
 			}
 
-			System.out.println("\n=== CASO DE USO 2: Puestos con tiempo de montaje superior a limite ===");
-			int tiempoLimite = 30;
-			List<PuestoDesarmable> puestos = UnidadDeVentaABM.getInstancia().traerPuestosConTiempoMontajeMayorA(tiempoLimite);
-			for (PuestoDesarmable p : puestos) {
-				System.out.println("Puesto: " + p.getNombreComercial() + " | Tiempo: " + p.getTiempoMontaje() + " min");
-			}
+			System.out.println("\n=== CASO DE USO 2: Puestos con tiempo de montaje por parametro y festival");
+			Festival festival = FestivalABM.getInstancia().traer(1);
+			List<PuestoDesarmable> puestos = UnidadDeVentaABM.getInstancia().traerPuestosDesarmables(festival, 30, 90);
 
+			for (PuestoDesarmable pd : puestos) {
+				System.out.println("Puesto: " + pd.getNombreComercial() + " | Tiempo: " + pd.getTiempoMontaje() + " min");
+			}
+			
 			System.out.println("\n=== PRUEBAS FINALIZADAS CON ÉXITO ===");
 
 		} catch (Exception e) {
