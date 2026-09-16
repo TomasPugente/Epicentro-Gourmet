@@ -106,14 +106,16 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	}
 	
 	public List<Pedido> traerPedidosDeUnidadDeVentaEnFestival(int idUnidadDeVenta, int idFestival) throws HibernateException {
+
 	    List<Pedido> lista = null;
 
 	    try {
 	        iniciaOperacion();
 
-	        String hql = "SELECT p " +
+	        String hql = "SELECT DISTINCT p " +
 	                     "FROM UnidadDeVenta u " +
 	                     "JOIN u.pedido p " +
+	                     "JOIN FETCH p.platos " +
 	                     "WHERE u.idUnidadDeVenta = :idUnidadDeVenta " +
 	                     "AND u.festival.idfestival = :idFestival";
 
@@ -130,7 +132,6 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	}
 
 		public float calcularCostoTotal(int idUnidadDeVenta) {
-
 	    float costoTotal = 0;
         	    try {
 	        iniciaOperacion();
@@ -153,8 +154,10 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	        if (resultado != null) {
 	            costoTotal = resultado.floatValue();
 	        }
-              }
-		    return costoTotal;
+        	}finally {
+	        	session.close();
+	        }
+	        return costoTotal;
 	}
 	
 }

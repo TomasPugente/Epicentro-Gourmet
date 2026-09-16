@@ -26,8 +26,7 @@ public class FestivalDao extends Dao<Festival> {
 	}
 	
 	
-	public List<Object[]> traerFestivalesConMayorCantidadDeVentas(
-	        LocalDate fechaInicio, LocalDate fechaFin) {
+	public List<Object[]> traerFestivalesConMayorCantidadDeVentas(LocalDate fechaInicio, LocalDate fechaFin) {
 
 	    List<Object[]> lista = null;
 
