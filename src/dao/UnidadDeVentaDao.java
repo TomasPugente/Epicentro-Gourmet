@@ -7,6 +7,8 @@ import datos.PuestoDesarmable;
 import datos.UnidadDeVenta;
 import datos.Festival;
 import datos.FoodTruck;
+import datos.Pedido;
+
 import org.hibernate.HibernateException;
 import java.util.ArrayList;
 
@@ -60,6 +62,7 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	
 }
 	
+	//caso de uso: uno a muchos
 	@SuppressWarnings("unchecked")
 	public List<UnidadDeVenta> traerUnidadesPorFestival(int idFestival) throws Exception {
 	    List<UnidadDeVenta> lista = null;
@@ -80,14 +83,19 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	    return lista;
 	}
 	
+	//correccion herencia: festival, tiempo desde, tiempo hasta
 	@SuppressWarnings("unchecked")
-	public List<PuestoDesarmable> traerPuestosConTiempoMontajeMayorA(int tiempoLimite) throws Exception {
+	public List<PuestoDesarmable> traerPuestosDesarmables(Festival festival, int tiempoDesde, int tiempoHasta) throws Exception {
 	    List<PuestoDesarmable> lista = null;
 	    try {
 	        iniciaOperacion();
-	        String hql = "from PuestoDesarmable p where p.tiempoMontaje > :tiempoLimite";
+	        String hql = "from PuestoDesarmable p where p.festival = :festival "
+	                   + "and p.tiempoMontaje between :tiempoDesde and :tiempoHasta";
+	        
 	        lista = session.createQuery(hql)
-	                       .setParameter("tiempoLimite", tiempoLimite)
+	                       .setParameter("festival", festival)
+	                       .setParameter("tiempoDesde", tiempoDesde)
+	                       .setParameter("tiempoHasta", tiempoHasta)
 	                       .list();
 	    } catch (HibernateException e) {
 	        manejaExcepcion(e);
@@ -99,12 +107,35 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	
 	public float calcularCostoTotal(Festival festival, UnidadDeVenta unidadDeVenta) {
 
-	    float costoTotal = 0;
+	    List<Pedido> lista = null;
 
 	    try {
 
 	        iniciaOperacion();
 
+	        String hql = "SELECT DISTINCT p " +
+	                     "FROM UnidadDeVenta u " +
+	                     "JOIN u.pedido p " +
+	                     "JOIN FETCH p.platos " +
+	                     "WHERE u.idUnidadDeVenta = :idUnidadDeVenta " +
+	                     "AND u.festival.idfestival = :idFestival";
+
+	        lista = session.createQuery(hql, Pedido.class)
+	                .setParameter("idUnidadDeVenta", idUnidadDeVenta)
+	                .setParameter("idFestival", idFestival)
+	                .getResultList();
+
+	    } finally {
+	        session.close();
+	    }
+
+	    return lista;
+	}
+
+		public float calcularCostoTotal(int idUnidadDeVenta) {
+	    float costoTotal = 0;
+        	    try {
+	        iniciaOperacion();
 	        String sql =
 	                "SELECT u.SueldoBase " +
 	                "+ u.CostoPorSuperficie " +
@@ -136,7 +167,5 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 
 	    return costoTotal;
 	}
-	
-	
 	
 }

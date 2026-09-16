@@ -64,7 +64,9 @@ public class Cocinero extends Personal {
 
 	@Override
 	public String toString() {
-		return "Cocinero [especialidad=" + especialidad + ", plusPorCategoria=" + plusPorCategoria + "]";
+		return "Cocinero [especialidad=" + especialidad + ", plusPorCategoria=" + plusPorCategoria + ", idPersonal=" + idPersonal + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+                + ", fechaNacimiento=" + fechaNacimiento + ", fechaIngreso=" + fechaIngreso + ", sueldoBase="
+                + sueldoBase + "]";
 	}
 
 	

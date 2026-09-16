@@ -19,19 +19,29 @@ public class PersonalDao extends Dao<Personal> {
 
     }
 
-    public List<Personal> traerCajerosTurnoNoche() throws Exception {
-         List<Personal> lista = null;
-            try {
-                iniciaOperacion();
-                String hql = "from Cajero c where c.turno = :turno";
-                lista = session.createQuery(hql, Personal.class)
-                        .setParameter("turno", "noche")
-                        .getResultList();
-            } finally {
-                session.close();
-            }
-            return lista;
+    public List<Personal> traerPersonalDeUnidadDeVentaEnFestival(int idUnidadDeVenta, int idFestival) throws Exception {
 
+        List<Personal> lista = null;
+
+        try {
+            iniciaOperacion();
+
+            String hql = "SELECT DISTINCT p " +
+                         "FROM UnidadDeVenta u " +
+                         "JOIN u.personal p " +
+                         "WHERE u.idUnidadDeVenta = :idUnidadDeVenta " +
+                         "AND u.festival.idfestival = :idFestival";
+
+            lista = session.createQuery(hql, Personal.class)
+                    .setParameter("idUnidadDeVenta", idUnidadDeVenta)
+                    .setParameter("idFestival", idFestival)
+                    .getResultList();
+
+        } finally {
+            session.close();
+        }
+
+        return lista;
     }
     public List<Personal> traerPersonalPorSueldoMenor(float sueldo) throws Exception {
 

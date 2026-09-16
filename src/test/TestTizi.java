@@ -34,7 +34,6 @@ public class TestTizi {
 		
 		System.out.println("NUEVA CONSULTA REALIZADA");
 		
-		
 		System.out.println("El total de cajeros en la Unidad de Venta en los distintos turnos son: " + UnidadDeVentaABM.getInstancia().cantidadCajerosPorTurno(festival));
 		
 		

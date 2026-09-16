@@ -1,7 +1,10 @@
 package dao;
 import datos.Festival;
+import datos.Pedido;
 import datos.Plato;
 import org.hibernate.HibernateException;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,36 +26,41 @@ public class FestivalDao extends Dao<Festival> {
 	}
 	
 	
-	public List<Festival> traerFestivalesConMayorCantidadDeVentas() throws HibernateException {
+	public List<Object[]> traerFestivalesConMayorCantidadDeVentas(LocalDate fechaInicio, LocalDate fechaFin) {
 
-		List<Festival> lista = null;
+	    List<Object[]> lista = null;
 
-		try {
+	    try {
 
-			iniciaOperacion();
+	        iniciaOperacion();
 
-			String hql = "SELECT f " +
-					"FROM Festival f " +
-					"JOIN f.unidadDeVenta u " +
-					"JOIN u.pedido p " +
-					"GROUP BY f " +
-					"HAVING COUNT(p) >= ALL (" +
-						"SELECT COUNT(p2) " +
-						"FROM Festival f2 " +
-						"JOIN f2.unidadDeVenta u2 " +
-						"JOIN u2.pedido p2 " +
-						"GROUP BY f2" +
-					")";
+	        String hql =
+	                "SELECT f, COUNT(p) " +
+	                "FROM Festival f " +
+	                "JOIN f.unidadDeVenta u " +
+	                "JOIN u.pedido p " +
+	                "WHERE f.fechainicio >= :fechaInicio " +
+	                "AND f.fechafin <= :fechaFin " +
+	                "GROUP BY f " +
+	                "ORDER BY COUNT(p) DESC";
 
-			lista = session.createQuery(hql, Festival.class)
-					.getResultList();
+	        lista = session.createQuery(hql, Object[].class)
+	                .setParameter("fechaInicio", fechaInicio)
+	                .setParameter("fechaFin", fechaFin)
+	                .setMaxResults(3)
+	                .getResultList();
 
-		} finally {
+	    } finally {
 
-			session.close();
-		}
+	        session.close();
 
-		return lista;
+	    }
+
+	    return lista;
 	}
+	
+	
+
+	
 }
 	
