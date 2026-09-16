@@ -79,9 +79,7 @@ public class UnidadDeVentaABM {
     }
 	
 
-	public Map<String, Integer> cantidadCajerosPorTurno(int idFestival) {
-
-	    Festival festival = FestivalDao.getinstancia().traer(idFestival);
+	public Map<String, Integer> cantidadCajerosPorTurno(Festival festival) {
 
 	    Map<String, Integer> cantidadPorTurno = new HashMap<>();
 
@@ -92,10 +90,14 @@ public class UnidadDeVentaABM {
 	            if (p instanceof Cajero) {
 
 	                Cajero cajero = (Cajero) p;
+
 	                String turno = cajero.getTurno();
 
 	                if (cantidadPorTurno.containsKey(turno)) {
-	                    cantidadPorTurno.put(turno, cantidadPorTurno.get(turno) + 1);
+	                    cantidadPorTurno.put(
+	                        turno,
+	                        cantidadPorTurno.get(turno) + 1
+	                    );
 	                } else {
 	                    cantidadPorTurno.put(turno, 1);
 	                }
@@ -134,8 +136,8 @@ public class UnidadDeVentaABM {
 		return ingresos;
 	}
 	
-	public float calcularCostoTotal(int idUnidadDeVenta){
-		return UnidadDeVentaDao.getInstancia().calcularCostoTotal(idUnidadDeVenta);
+	public float calcularCostoTotal(Festival festival, UnidadDeVenta unidadDeVenta){
+		return UnidadDeVentaDao.getInstancia().calcularCostoTotal(festival, unidadDeVenta);
 	}
 	
 	

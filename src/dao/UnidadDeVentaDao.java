@@ -5,6 +5,7 @@ import org.hibernate.HibernateException;
 
 import datos.PuestoDesarmable;
 import datos.UnidadDeVenta;
+import datos.Festival;
 import datos.FoodTruck;
 import org.hibernate.HibernateException;
 import java.util.ArrayList;
@@ -96,11 +97,12 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	    return lista;
 	}
 	
-	public float calcularCostoTotal(int idUnidadDeVenta) {
+	public float calcularCostoTotal(Festival festival, UnidadDeVenta unidadDeVenta) {
 
 	    float costoTotal = 0;
 
 	    try {
+
 	        iniciaOperacion();
 
 	        String sql =
@@ -113,10 +115,14 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	                "ON u.idUnidadDeVenta = f.idUnidadDeVenta " +
 	                "LEFT JOIN PuestoDesarmable p " +
 	                "ON u.idUnidadDeVenta = p.idUnidadDeVenta " +
-	                "WHERE u.idUnidadDeVenta = :id";
+	                "WHERE u.idUnidadDeVenta = :idUnidadDeVenta " +
+	                "AND u.idfestival = :idfestival";
 
 	        Number resultado = (Number) session.createSQLQuery(sql)
-	                .setParameter("id", idUnidadDeVenta)
+	                .setParameter("idUnidadDeVenta",
+	                        unidadDeVenta.getIdUnidadDeVenta())
+	                .setParameter("idfestival",
+	                        festival.getIdfestival())
 	                .uniqueResult();
 
 	        if (resultado != null) {
@@ -124,6 +130,7 @@ public class UnidadDeVentaDao extends Dao<UnidadDeVenta> {
 	        }
 
 	    } finally {
+
 	        session.close();
 	    }
 

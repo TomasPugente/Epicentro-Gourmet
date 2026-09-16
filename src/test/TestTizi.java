@@ -2,6 +2,8 @@ package test;
 import java.time.LocalDate;
 import org.hibernate.Session;
 import dao.HibernateUtil;
+import datos.Festival;
+import datos.UnidadDeVenta;
 import negocio.FestivalABM;
 import negocio.PersonalABM;
 import negocio.UnidadDeVentaABM;
@@ -21,13 +23,19 @@ public class TestTizi {
 		
 		*/
 		
-		System.out.println("El costo total de la Unidad de Venta es: " + UnidadDeVentaABM.getInstancia().calcularCostoTotal(1));
+		Festival festival = FestivalABM.getInstancia().traer(1);
+
+		UnidadDeVenta unidad = UnidadDeVentaABM.getInstancia().traer(1);
+		
+		
+		
+		System.out.println("El costo total de la Unidad de Venta es: " + UnidadDeVentaABM.getInstancia().calcularCostoTotal(festival,unidad));
 		
 		
 		System.out.println("NUEVA CONSULTA REALIZADA");
 		
 		
-		System.out.println("El total de cajeros en la Unidad de Venta en los distintos turnos son: " + UnidadDeVentaABM.getInstancia().cantidadCajerosPorTurno(1));
+		System.out.println("El total de cajeros en la Unidad de Venta en los distintos turnos son: " + UnidadDeVentaABM.getInstancia().cantidadCajerosPorTurno(festival));
 		
 		
 	}
