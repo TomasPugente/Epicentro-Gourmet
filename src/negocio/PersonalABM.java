@@ -53,8 +53,8 @@ public class PersonalABM {
 		return PersonalDao.getInstancia().traer(idPersonal);
 		}
 	
-	public List<Personal> traerCajerosTurnoNoche() throws Exception {
-		return PersonalDao.getInstancia().traerCajerosTurnoNoche();
+	public List<Personal> traerPersonalDeUnidadDeVentaEnFestival(int idUnidadDeVenta, int idFestival) throws Exception {
+		return PersonalDao.getInstancia().traerPersonalDeUnidadDeVentaEnFestival(idUnidadDeVenta, idFestival);
 	}
 	
 	

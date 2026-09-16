@@ -18,7 +18,7 @@ public class TestTomy {
 		
 		System.out.println(UnidadDeVentaABM.getInstancia().traerPedidosDeUnidadDeVentaEnFestival(1, 1));
 		
-		//System.out.println(PersonalABM.getInstancia().traerPersonalPorSueldoMenor(50000));
+		System.out.println(PersonalABM.getInstancia().traerPersonalDeUnidadDeVentaEnFestival(1,1));
 	}
 
 }
